@@ -10,5 +10,4 @@ class Flight < ApplicationRecord
   validates :flight_duration, presence: true
   validates :from_airport_id, presence: true
   validates :to_airport_id, presence: true
-
 end
