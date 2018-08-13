@@ -1,6 +1,6 @@
 class Flight < ApplicationRecord
-  has_one :to_airport_id :class_name => “airport”
-  has_one :from_airport_id :class_name => “airport”
+  belongs_to :to_airport_id, :class_name => “airport”, foreign_key => "airport_id"
+  belongs_to :from_airport_id, :class_name => “airport”, foreign_key => "airport_id"
   has_many :flight_bundle_flights
   belongs_to :airline
 
