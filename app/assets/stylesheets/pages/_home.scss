@@ -10,6 +10,12 @@ body {
   font-size: 25px;
 }
 
+.header-code {
+  position: absolute;
+  top: 230px;
+  left: 400px;
+}
+
 #header {
   /*color: #828282;
   padding: 50px;
@@ -17,7 +23,7 @@ body {
   align-items: center
   justify-content: center;*/
   color: white;
-  height: 500px;
+  height: 80vh;
   text-align: center;
   background-size: cover;
 
