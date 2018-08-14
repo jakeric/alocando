@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
   get 'terms', to: 'pages#terms'
-  get 'FAQ', to: 'pages#faq'
+  get 'FAQ', to: 'pages#faq', as: 'faq'
 
 end
