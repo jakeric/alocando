@@ -1,2 +1,144 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Homepage</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Leave those next 4 lines if you care about users using IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <div class="text-center">
+
+    <div id="header">
+
+      <div class="header-text">
+        <h1>Find the cheapest flights</h1>
+        <h2>to meet in a city with your friend from abroad</h2>
+      </div>
+
+      <div class="search-form">
+        <form class="form-inline">
+          <label class="sr-only" for="inlineFormInput">Your city</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city">
+          <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city">
+          <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputDate" placeholder="Start and Return Date">
+          <button type="submit" class="btn btn-orange mb-2">Search</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="wrapper-grey">
+      <div class="container-how-to">
+        <h2><strong>How it works</strong></h2>
+        <div class="row center-boxes">
+
+          <div class="col-xs-12 hidden-xs col-sm-4">
+            <div class="card card-grey">
+              <div class="image-round">
+                <%= image_tag "des.png" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+            <div class="card card-grey">
+              <h3>First text</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ea corporis dignissimos. Alias sed delectus at eaque sit ut recusandae odit quae repellendus velit deleniti maxime quaerat, reiciendis cupiditate dignissimos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="wrapper-turquois">
+      <div class="container">
+        <div class="row center-boxes">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card card-turquois">
+              <h3>second text</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ea corporis dignissimos. Alias sed delectus at eaque sit ut recusandae odit quae repellendus velit deleniti maxime quaerat, reiciendis cupiditate dignissimos.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="card card-turquois">
+              <div class="image-round">
+                <%= image_tag "fly.png" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-grey">
+      <div class="container">
+        <div class="row center-boxes">
+
+          <div class="col-xs-12 hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="card card-grey">
+              <div class="image-round">
+                <%= image_tag "sha.png" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card card-grey">
+              <h3>third text</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ea corporis dignissimos. Alias sed delectus at eaque sit ut recusandae odit quae repellendus velit deleniti maxime quaerat, reiciendis cupiditate dignissimos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="wrapper-turquois">
+      <div class="container">
+        <div class="row center-boxes">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card card-turquois">
+              <h3>fourth text</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus ea corporis dignissimos. Alias sed delectus at eaque sit ut recusandae odit quae repellendus velit deleniti maxime quaerat, reiciendis cupiditate dignissimos.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-xs-12 hidden-xs col-sm-4 col-md-4 col-lg-4">
+            <div class="card card-turquois">
+              <div class="image-round">
+                <%= image_tag "spl.png" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </div>
+</html>
