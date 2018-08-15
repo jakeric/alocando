@@ -18,6 +18,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
+  <!-- Banner -->
   <div class="text-center">
 
     <div id="header">
@@ -27,6 +29,7 @@
         <h2>to meet in a city with your friend from abroad</h2>
       </div>
 
+<!--Input form for searching flights -->
       <div class="search-form">
         <form class="form-inline">
           <label class="sr-only" for="inlineFormInput">Your city</label>
@@ -34,18 +37,45 @@
           <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
           <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city">
           <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputDate" placeholder="Start and Return Date">
+            <div class="buoy-show-datepicker" >
+
+          <div class="datepicker-field nobkear">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date">
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormEndInputDate">
+          </div>
+        </div >
+        <div class="datepicker-submit">
           <button type="submit" class="btn btn-orange mb-2">Search</button>
+        </div>
         </form>
       </div>
       <div class="header-logo">
         <%= image_tag "logo.png"%>
       </div>
     </div>
-
-
   </div>
 
+<!-- Datepicker
+  <div class="buoy-show-datepicker" disable-dates= " <%= @date_json %> " >
+    <div class="col-xs-12">
+      <%#= simple_form_for [@flight] do |f| %>
+      <div class="form-row">
+        <div class="datepicker-field">
+          <div>
+          <%#= f.input :start_date, as: :string, wrapper_html: { :class => "inline_field_wrapper" }, label: 'Select dates'%>
+          <%#= f.input :end_date, as: :hidden, wrapper_html: { :class => "inline_field_wrapper" } %>
+          </div>
+
+          <div class="datepicker-submit">
+          <%#= f.button :submit, :disabled => @user_not_logged, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+      <#% end %>
+    </div>
+  </div> -->
+
+<!-- How to area -->
     <div class="wrapper-grey">
       <div class="container-how-to">
         <h2><strong>How it works</strong></h2>

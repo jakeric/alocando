@@ -117,5 +117,4 @@ ActiveRecord::Schema.define(version: 2018_08_14_152121) do
   add_foreign_key "flight_bundle_flights", "flight_bundles"
   add_foreign_key "flight_bundle_flights", "flights"
   add_foreign_key "flights", "airlines"
-  add_foreign_key "photos", "cities"
 end
