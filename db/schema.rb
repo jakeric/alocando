@@ -77,14 +77,14 @@ ActiveRecord::Schema.define(version: 2018_08_14_152121) do
     t.datetime "arrival_datetime"
     t.float "price"
     t.float "flight_duration"
-    t.bigint "from_airport_id_id"
-    t.bigint "to_airport_id_id"
+    t.bigint "from_airport_id"
+    t.bigint "to_airport_id"
     t.bigint "airline_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["airline_id"], name: "index_flights_on_airline_id"
-    t.index ["from_airport_id_id"], name: "index_flights_on_from_airport_id_id"
-    t.index ["to_airport_id_id"], name: "index_flights_on_to_airport_id_id"
+    t.index ["from_airport_id"], name: "index_flights_on_from_airport_id"
+    t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
   end
 
   create_table "photos", force: :cascade do |t|
