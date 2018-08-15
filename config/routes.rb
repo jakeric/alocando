@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   resources :airports, only: [:create, :update]
   resources :airlines, only: [:create, :update]
   resources :cities, only: [:create, :update]
-  resources :photos, only: [:create, :update]
+  resources :attachments, only: [:create, :update]
 
 
   get 'about', to: 'pages#about'
   get 'terms', to: 'pages#terms'
-  get 'FAQ', to: 'pages#faq'
+  get 'FAQ', to: 'pages#faq', as: 'faq'
 
 end
