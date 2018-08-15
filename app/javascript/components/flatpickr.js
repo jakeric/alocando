@@ -5,6 +5,7 @@ const toggleDateInputs = function() {
   const endDateinput = document.getElementById('inlineFormEndInputDate');
 
   flatpickr(startDateinput, {
+    allowInput: true,
     mode: "range",
     minDate: 'today',
     dateFormat: "Y-m-d",
