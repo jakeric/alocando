@@ -1,0 +1,40 @@
+.footer {
+  background-color: #65C0BA;
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.6);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50px
+}
+
+.footer-copyright {
+  position: absolute;
+  bottom: 20px;
+  right: 50px
+}
+
+.footer-static-pages {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  a {
+  padding-right: 20px;
+  font-weight: normal;
+  color: rgba(0,0,0,0.6) ;
+
+   }
+}
+
+
+.footer-links a:hover {
+  opacity: 1;
+}
