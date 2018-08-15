@@ -1,12 +1,13 @@
 class FlightBundlesController < ApplicationController
+skip_before_action :authenticate_user!
 
   def index
     # implement search logic here
 
-    # input from the search bar (homepage)
+    # input from the search bar (homepage -> params)
     start_date = Date.today + 4
     end_date = Date.today + 7
-    my_city = 'Berlin'
+    my_city = 'Munich'
     friends_city = 'Lisbon'
 
     # search for all the available airports in my city and in the city of my friend
@@ -47,25 +48,47 @@ class FlightBundlesController < ApplicationController
 
     # check if there are return flights from the location to both cities on the return date and find the cheapest one
     # alson building the bundles
+    @bundle = []
     destination_airport_ids.each do |destination_airport_id|
 
       # find cheapest outbound flights
-      my_city_flight = Flight.where("DATE(departure_datetime) = ?", start_date).where(to_airport: destination_airport_id, from_airport: my_airport_ids).order(price: :asc).limit(1)
-      friends_city_flight = Flight.where("DATE(departure_datetime) = ?", start_date).where(to_airport: destination_airport_id, from_airport: friends_airport_ids).order(price: :asc).limit(1)
+      my_city_flight = Flight.where("DATE(departure_datetime) = ?", start_date).where(to_airport: destination_airport_id, from_airport: my_airport_ids).order(price: :asc).limit(1).first
+      friends_city_flight = Flight.where("DATE(departure_datetime) = ?", start_date).where(to_airport: destination_airport_id, from_airport: friends_airport_ids).order(price: :asc).limit(1).first
       # find cheapest return flights
-      my_city_return_flight = Flight.where("DATE(arrival_datetime) = ?", end_date).where(to_airport: my_airport_ids, from_airport: destination_airport_id).order(price: :asc).limit(1)
-      friends_city_return_flight = Flight.where("DATE(arrival_datetime) = ?", end_date).where(to_airport: friends_airport_ids, from_airport: destination_airport_id).order(price: :asc).limit(1)
+      my_city_return_flight = Flight.where("DATE(arrival_datetime) = ?", end_date).where(to_airport: my_airport_ids, from_airport: destination_airport_id).order(price: :asc).limit(1).first
+      friends_city_return_flight = Flight.where("DATE(arrival_datetime) = ?", end_date).where(to_airport: friends_airport_ids, from_airport: destination_airport_id).order(price: :asc).limit(1).first
 
-      new_bundle = Bundle_bundle.new
-      new_budnle.save
-      Flight_bundle_flight.new(flight: my_city_flight, flight_bundle: new_bundle).save
-      Flight_bundle_flight.new(flight: friends_city_flight, flight_bundle: new_bundle).save
-      Flight_bundle_flight.new(flight: my_city_return_flight, flight_bundle: new_bundle).save
-      Flight_bundle_flight.new(flight: friends_city_return_flight, flight_bundle: new_bundle).save
-      new_bundle.price = my_city_flight.price + friends_city_flight.price + my_city_return_flight.price + friends_city_return_flight.price
+      # creating a new flight_bundle
+      new_bundle = FlightBundle.new
       new_bundle.save
+
+      if my_city_flight.nil? || friends_city_flight.nil? || my_city_return_flight.nil? || friends_city_return_flight.nil?
+        # if there are not enough flights, destroy the FlightBundle Object
+        FlightBundle.find(new_bundle.id).destroy
+      else
+        # creating a new flight_bundle_flight which includes all the flights and the flight_bundle
+        first_flight = FlightBundleFlight.new(flight: my_city_flight, flight_bundle_id: new_bundle.id)
+        second_flight = FlightBundleFlight.new(flight: friends_city_flight, flight_bundle_id: new_bundle.id)
+        third_flight = FlightBundleFlight.new(flight: my_city_return_flight, flight_bundle_id: new_bundle.id)
+        fourth_flight = FlightBundleFlight.new(flight: friends_city_return_flight, flight_bundle_id: new_bundle.id)
+
+        # save all the flight_bundle_flights
+        first_flight.save
+        second_flight.save
+        third_flight.save
+        fourth_flight.save
+
+        # calculate the total_price for the flight_bundle and update
+        new_bundle.total_price = my_city_flight.price + friends_city_flight.price + my_city_return_flight.price + friends_city_return_flight.price
+        new_bundle.save
+
+        # fill bundle array which will be returned in the result page
+        @bundle << new_bundle
+      end
     end
 
+    # return @bundle as an array
+    return @bundle
   end
 
   def show
