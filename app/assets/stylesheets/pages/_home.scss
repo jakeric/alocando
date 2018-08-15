@@ -50,10 +50,21 @@ body {
   right: 400px;
 }
 
+.color {
+background-color: white;
+}
 .search-form {
   position: absolute;
   bottom: 180px;
   right: 350px;
+}
+
+.form-homepage {
+  display: flex;
+}
+
+.input-padding {
+  margin-right: 4px;
 }
 
 .wrapper-grey {
@@ -117,4 +128,12 @@ justify-content: space-around;
 .btn-orange {
 background-color: #F7A442;
 }
+
+.btn-orange:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
+}
+
 

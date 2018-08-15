@@ -31,17 +31,20 @@
 
 <!--Input form for searching flights -->
       <div class="search-form">
-        <form class="form-inline">
-          <label class="sr-only" for="inlineFormInput">Your city</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city">
-          <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city">
-          <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
-            <div class="buoy-show-datepicker" >
+        <form class="form-inline form-homepage">
 
-          <div class="datepicker-field nobkear">
+          <label class="sr-only" for="inlineFormInput">Your city</label>
+          <input type="text" class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city">
+
+            <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
+          <input type="text" class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city">
+
+          <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
+
+        <div class="buoy-show-datepicker input-padding" >
+          <div class="datepicker-field">
             <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date">
-            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormEndInputDate">
+            <input type="text" class="form-control hidden mb-2 mr-sm-2" id="inlineFormEndInputDate">
           </div>
         </div >
         <div class="datepicker-submit">
