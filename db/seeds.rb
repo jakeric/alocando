@@ -79,7 +79,7 @@ puts "deleting airports without a city"
 Airport.where(city_id: nil).destroy_all
 puts "airports without a city has been deleted"
 
-if Flight.count != 1001
+if Flight.count != 100
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -92,17 +92,22 @@ if Flight.count != 1001
 
   1000.times do
     # get random start and end airport
-    start_airport = Airport.limit(1).order("RANDOM()")
+    # start_airport = Airport.limit(1).order("RANDOM()")
+
+    # Munich, Berlin, Paris, Lisbon, London, Madrid
+    start_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD'].sample
+
+    # search for start airport city
+    start_airport = Airport.where(acronym: start_airport)
     city_one = start_airport[0].city.name
 
-    end_airport = Airport.limit(1).order("RANDOM()")
-    city_two = end_airport[0].city.name
+    end_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD']
+    end_airport.delete(start_airport)
+    end_airport = end_airport.sample
 
-    # recalculate when start and end airport are the same
-    if city_one == city_two
-      end_airport = Airport.limit(1).order("RANDOM()")
-      city_two = end_airport[0].city.name
-    end
+    # search for end_airport city
+    end_airport = Airport.where(acronym: end_airport)
+    city_two = end_airport[0].city.name
 
     # get random airline
     airline = Airline.limit(1).order("RANDOM()")
@@ -113,8 +118,8 @@ if Flight.count != 1001
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
     # because there are special characters in some cities, we use default values
-    city_one = ["berlin", "munich", "moskau", "sanfrancisco", "tokyo", "peking"].sample
-    city_two = ["lisbon", "hamburg", "madrid", "bali", "sydney", "rome"].sample
+    # city_one = ["berlin", "munich", "moskau", "sanfrancisco", "tokyo", "peking"].sample
+    # city_two = ["lisbon", "hamburg", "madrid", "bali", "sydney", "rome"].sample
 
     distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
     distance_serialized = open(distance_url).read
@@ -138,6 +143,10 @@ if Flight.count != 1001
       airline_id: airline.ids.first
       )
     new_flight.save
+    puts "200 flights created" if Flight.count == 200
+    puts "400 flights created" if Flight.count == 400
+    puts "600 flights created" if Flight.count == 600
+    puts "800 flights created" if Flight.count == 800
   end
 else
   puts "There are already 1000 flights, Sir."
