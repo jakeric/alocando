@@ -79,7 +79,7 @@ puts "deleting airports without a city"
 Airport.where(city_id: nil).destroy_all
 puts "airports without a city has been deleted"
 
-if Flight.count != 1000
+if Flight.count != 1001
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -109,12 +109,13 @@ if Flight.count != 1000
 
     # calculate random start date
     departure_hour = rand(1..24)
-    day_range = rand(1..30)
+    day_range = rand(1..10)
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
+    # because there are special characters in some cities, we use default values
+    city_one = ["berlin", "munich", "moskau", "sanfrancisco", "tokyo", "peking"].sample
+    city_two = ["lisbon", "hamburg", "madrid", "bali", "sydney", "rome"].sample
 
-    city_one = 'Berlin'
-    city_two = 'Lisbon'
     distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
     distance_serialized = open(distance_url).read
     distance = JSON.parse(distance_serialized)
