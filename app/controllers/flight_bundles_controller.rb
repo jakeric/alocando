@@ -5,10 +5,10 @@ skip_before_action :authenticate_user!
     # implement search logic here
 
     # input from the search bar (homepage -> params)
-    start_date = Date.today + 4
-    end_date = Date.today + 7
-    my_city = 'Munich'
-    friends_city = 'Lisbon'
+    start_date = Date.today + 1
+    end_date = Date.today + 3
+    my_city = 'Berlin'
+    friends_city = 'Munich'
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
@@ -68,8 +68,8 @@ skip_before_action :authenticate_user!
       else
         # creating a new flight_bundle_flight which includes all the flights and the flight_bundle
         first_flight = FlightBundleFlight.new(flight: my_city_flight, flight_bundle_id: new_bundle.id)
-        second_flight = FlightBundleFlight.new(flight: friends_city_flight, flight_bundle_id: new_bundle.id)
-        third_flight = FlightBundleFlight.new(flight: my_city_return_flight, flight_bundle_id: new_bundle.id)
+        second_flight = FlightBundleFlight.new(flight: my_city_return_flight, flight_bundle_id: new_bundle.id)
+        third_flight = FlightBundleFlight.new(flight: friends_city_flight, flight_bundle_id: new_bundle.id)
         fourth_flight = FlightBundleFlight.new(flight: friends_city_return_flight, flight_bundle_id: new_bundle.id)
 
         # save all the flight_bundle_flights
@@ -86,6 +86,9 @@ skip_before_action :authenticate_user!
         @bundle << new_bundle
       end
     end
+
+    # sort object by total_price
+    @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
 
     # return @bundle as an array
     return @bundle
