@@ -1,23 +1,57 @@
-.container-about {
-  color: $turquoise;
-}
-.row-about-cards {
-}
-.card-about-employee {
-  border: 1px solid black;
-  margin: 15px auto;
-  height: 280px;
-  width: 650px;
-  padding: 0px;
-  display: flex;
-  background-color: white;
-  border-radius: 8px;
-}
-.card-employee-infos {
-}
-.employee-info-country {}
 
-.card-employee-photo {
-  border: 1px solid black;
-  background: blue;
+// .container-about {
+//   color: $turquoise;
+// }
+// .row-about-cards {
+// }
+// .card-about-employee {
+//   border: 1px solid black;
+//   margin: 15px auto;
+//   height: 280px;
+//   width: 650px;
+//   padding: 0px;
+//   display: flex;
+//   background-color: white;
+//   border-radius: 8px;
+// }
+// .card-employee-infos {
+// }
+// .employee-info-country {}
+
+// .card-employee-photo {
+//   border: 1px solid black;
+//   background: blue;
+// }
+
+
+
+.banner-about {
+ height: 30vh;
+  background-size: cover;
+  background-image: url('Rectangle.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+// .container-faq {
+//   padding: 15px 25px 15px;
+//   color: black;
+//   text-align: left;
+// }
+
+.image-round img {
+  border-radius: 50%;
+}
+
+.container-about {
+  color: black
+}
+
+.card-about {
+    background-color: #EFEFEF;
+    color: black;
 }
