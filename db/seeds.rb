@@ -75,14 +75,19 @@ else
   puts "Airlines are already created, Sir."
 end
 
+# deleting all the airports where city is nil
 puts "deleting airports without a city"
 Airport.where(city_id: nil).destroy_all
 puts "airports without a city has been deleted"
 
-if Flight.count != 100
+
+# seeding flights
+if Flight.count != 2000
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
+  FlightBundleFlight.destroy_all
+  FlightBundle.destroy_all
   Flight.destroy_all
   puts "#{number_of_flights} has been deleted."
 
@@ -90,19 +95,21 @@ if Flight.count != 100
   # average speed of a plane 885 km/hr
   airplane_speed = 885.0
 
-  1000.times do
+  4000.times do
     # get random start and end airport
-    # start_airport = Airport.limit(1).order("RANDOM()")
 
-    # Munich, Berlin, Paris, Lisbon, London, Madrid
-    start_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD'].sample
+    # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest
+    start_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD', 'BTS', 'XZO', 'RKV', 'FCO', 'YNG', 'WAW', 'XEV', 'BUD'].sample
 
     # search for start airport city
     start_airport = Airport.where(acronym: start_airport)
     city_one = start_airport[0].city.name
 
-    end_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD']
-    end_airport.delete(start_airport)
+
+    exclude_airports = Airport.where(city_id: start_airport[0].city_id).pluck(:acronym)
+
+    end_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD', 'BTS', 'XZO', 'RKV', 'FCO', 'YNG', 'WAW', 'XEV', 'BUD']
+    end_airport = end_airport - exclude_airports
     end_airport = end_airport.sample
 
     # search for end_airport city
@@ -117,21 +124,18 @@ if Flight.count != 100
     day_range = rand(1..10)
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
-    # because there are special characters in some cities, we use default values
-    # city_one = ["berlin", "munich", "moskau", "sanfrancisco", "tokyo", "peking"].sample
-    # city_two = ["lisbon", "hamburg", "madrid", "bali", "sydney", "rome"].sample
+    # distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
+    # distance_serialized = open(distance_url).read
+    # distance = JSON.parse(distance_serialized)
 
-    distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
-    distance_serialized = open(distance_url).read
-    distance = JSON.parse(distance_serialized)
-
-    distance_km = distance["distance"]
+    # distance_km = distance["distance"]
+    distance_km = 2316.0 # distance Lisbon - Berlin
     flight_duration = distance_km / airplane_speed
-    time_offset_hours = distance["travel"]["timeOffset"]["offsetMins"] / 60
+    # time_offset_hours = distance["travel"]["timeOffset"]["offsetMins"] / 60
 
-    arrival_datetime = departure_datetime + (flight_duration / 24.0) + time_offset_hours
+    arrival_datetime = departure_datetime + (flight_duration / 24.0) #+ time_offset_hours
 
-    price = rand(15..600)
+    price = rand(15..450)
 
     new_flight = Flight.new(
       departure_datetime: departure_datetime,
@@ -143,12 +147,39 @@ if Flight.count != 100
       airline_id: airline.ids.first
       )
     new_flight.save
+    puts "100 flights created" if Flight.count == 100
     puts "200 flights created" if Flight.count == 200
+    puts "300 flights created" if Flight.count == 300
     puts "400 flights created" if Flight.count == 400
+    puts "500 flights created" if Flight.count == 500
     puts "600 flights created" if Flight.count == 600
+    puts "700 flights created" if Flight.count == 700
     puts "800 flights created" if Flight.count == 800
+    puts "900 flights created" if Flight.count == 900
   end
 else
   puts "There are already 1000 flights, Sir."
 end
+
+
+# city description
+# all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest']
+# all_cities.each do |city|
+
+#   # get data from distance24 API
+#   distance_url = "https://www.distance24.org/route.json?stops=#{city}|Tokyo"
+#   distance_serialized = open(distance_url).read
+#   distance = JSON.parse(distance_serialized)
+#   description = distance["stops"][0]["wikipedia"]["abstract"]
+
+#   # update the description of the city
+#   city_to_update = City.where(name: city).first
+#   city_to_update.description = description
+
+#   # insert acitivities when we find something
+
+#   # save city
+#   city_to_update.save
+# end
+
 puts "You have just been seeded Duuuude."

@@ -1,5 +1,26 @@
 <h1>Result page (index)</h1>
 
 <% @bundle.each do |flight_bundle| %>
-<p> <%= flight_bundle.total_price  %> </p>
+
+  <div style="color:black;">
+    <% first_flight_bundle_flight = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id).first %>
+
+    <h3> <%= first_flight_bundle_flight.flight.to_airport.city.name %>  </h3>
+    <h5> <%= first_flight_bundle_flight.flight.to_airport.city.country %> </h5>
+    <p> Total Price: <%= flight_bundle.total_price  %> € </p>
+    <% all_flights = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id) %>
+    <% x = 0 %>
+      <% all_flights.sort_by {|flight_bundle| flight_bundle.id}.each do |bundle_flight| %>
+        <% arrow = "" %>
+        <% if x == 0 || x == 2 %>
+        <%    arrow = "------->" %>
+        <% else %>
+        <%    arrow = "<-------" %>
+        <% end %>
+        <ul>
+          <li><%= "#{bundle_flight.flight.from_airport.city.name} #{arrow} #{bundle_flight.flight.to_airport.city.name}" %> </li>
+        </ul>
+        <% x += 1 %>
+      <% end %>
+  </div>
 <% end %>
