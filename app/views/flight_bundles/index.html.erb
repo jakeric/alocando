@@ -1,6 +1,7 @@
 <h1>Result page (index)</h1>
 
 <% @bundle.each do |flight_bundle| %>
+
   <div style="color:black;">
     <% first_flight_bundle_flight = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id).first %>
 

@@ -10,6 +10,7 @@ skip_before_action :authenticate_user!
     my_city = 'Lisbon'
     friends_city = 'Berlin'
 
+
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
     friends_airport_ids = Airport.includes(:city).where(cities: { name: friends_city }).pluck(:id)
