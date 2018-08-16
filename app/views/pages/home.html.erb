@@ -22,8 +22,7 @@
   <!-- Banner -->
   <div class="text-center">
 
-    <div id="header">
-
+    <div id="header" style="background-image: url('<%= image_url "Rectangle.png" %>');">
       <div class="header-text">
         <h1>Find the cheapest flights</h1>
         <h2>to meet in a city with your friend from abroad</h2>
@@ -31,20 +30,20 @@
 
 <!--Input form for searching flights -->
       <div class="search-form">
-        <form action="/flight_bundles" method="POST" class="form-inline form-homepage">
+        <form action="/flight_bundles" method="get" class="form-inline form-homepage">
 
           <label class="sr-only" for="inlineFormInput">Your city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city" name="your-city">
 
             <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city">
 
           <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
 
         <div class="buoy-show-datepicker input-padding" >
           <div class="datepicker-field">
-            <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date">
-            <input type="text" class="form-control hidden mb-2 mr-sm-2" id="inlineFormEndInputDate">
+            <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date" name="start-date">
+            <input type="text" class="form-control hidden mb-2 mr-sm-2" id="inlineFormEndInputDate" name="end-date">
           </div>
         </div >
         <div class="datepicker-submit">
