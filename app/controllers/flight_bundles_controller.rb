@@ -7,8 +7,8 @@ skip_before_action :authenticate_user!
     # input from the search bar (homepage -> params)
     start_date = Date.today + 1
     end_date = Date.today + 3
-    my_city = 'Berlin'
-    friends_city = 'Munich'
+    my_city = 'Lisbon'
+    friends_city = 'Berlin'
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
@@ -101,6 +101,12 @@ skip_before_action :authenticate_user!
   end
 
   def destroy
+  end
+
+  private
+
+  def flight_params
+    params.require(:flight_bundle).permit()
   end
 
 end
