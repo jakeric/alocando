@@ -1,32 +1,86 @@
-<h1>Result page (index)</h1>
+<div class="wrapper">
 
-<% @bundle.each do |flight_bundle| %>
-
-  <div style="color:black;">
-    <% first_flight_bundle_flight = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id).first %>
-
-    <h3> <%= first_flight_bundle_flight.flight.to_airport.city.name %>  </h3>
-    <h5> <%= first_flight_bundle_flight.flight.to_airport.city.country %> </h5>
-    <p> Total Price: <%= flight_bundle.total_price  %> € </p>
-    <% all_flights = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id) %>
-    <% x = 0 %>
-      <% all_flights.sort_by {|flight_bundle| flight_bundle.id}.each do |bundle_flight| %>
-        <% arrow = "" %>
-        <% if x == 0 || x == 2 %>
-        <%    arrow = "------->" %>
-        <% else %>
-        <%    arrow = "<-------" %>
-        <% end %>
-        <ul>
-          <li><%= "#{bundle_flight.flight.from_airport.city.name} #{arrow} #{bundle_flight.flight.to_airport.city.name}" %> </li>
-        </ul>
-        <% x += 1 %>
-      <% end %>
+  <!-- container on top with the search bar and filters  -->
+  <div class="container results__container-head">
+    <div class="results__search-recap" style="color: black">
+      <h3>
+        <%= @bundle.size %> results flying from
+        <%= params["your-city"] %>
+        and
+        <%= params["friends-city"] %>,
+        from
+        <%= Date.parse(params["start-date"]).strftime("%d/%m/%Y") %> to
+        <%= Date.parse(params["end-date"]).strftime("%d/%m/%Y") %>
+        </h3>
+    </div>
   </div>
-<% end %>
+  <!-- above closing container with the search bar and filters  -->
 
-<!-- <%# @image_array.each do |image| %>
-<img src="<%= image %>">
 
-<%# end %> -->
+  <div class="container results__container-results">
 
+    <!-- left side of the screen, with the results cards  -->
+    <div class="results__results-list-side">
+      <div class="row results__results-list-row">
+        <% @bundle.each do |flight_bundle| %>
+$          <div class="col-xs-12">
+            <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
+          </div>
+        <% end %>
+        <div class="col-xs-12">
+          <div class="results-loadmore-circle">
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- above is the closing div of the LEFT side of the screen  -->
+
+    <!-- right side of the screen, with city info  -->
+    <div class="results__results-infos-side">
+      <div class="row results__results-infos-row">
+
+          <div class="results__result-infos-card">
+            <div class="results__results-infos-picture">
+              <!-- put links to images -->
+            </div>
+            <div class="results__results-infos-destination">
+              <h1><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name %></h1>
+              <h4><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.country %></h4>
+            </div>
+            <div class="results__results-infos-description">
+              <p><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.description %></p>
+            </div>
+            <div class="results__results-infos-flights">
+              <h5><%= @bundle.first.flight_bundle_flights[0].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[0].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[1].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[1].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[2].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[2].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[3].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[3].flight.to_airport.name %></h6>
+
+            </div>
+            <div class="results__results-infos-activities">
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+    <!-- above is the closing div of the RIGHT side of the screen  -->
+
+  </div>
+  <!-- above is the closing div of the container results  -->
+
+</div>

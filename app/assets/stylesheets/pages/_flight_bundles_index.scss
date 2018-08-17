@@ -1,0 +1,84 @@
+.wrapper {
+  min-height: 80vh;
+  background-color: white;
+}
+
+// top container
+.results__container-head {
+}
+.results__search-recap {
+  text-align: center;
+}
+
+
+
+// results container
+.results__container-results {
+  display: flex;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+
+//left side
+.results__results-list-side {
+  flex-basis:50%;
+  flex-grow: 0;
+}
+.results__results-list-row {}
+
+.results-loadmore-circle {
+  width: 45px;
+  height: 45px;
+  background-color: #CAE3E1;
+  border-radius: 50%;
+  color: $dark-turquoise;
+  font-size: 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 5px;
+  align-items: center;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.25);
+  margin-left: 40%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+
+//right-side
+.results__results-infos-side {
+  flex-basis:50%;
+  flex-grow: 0;
+}
+.results__results-infos-row {
+  display: flex;
+  justify-content: center;
+}
+.results__result-infos-card {
+  height: 800px;
+  width: 500px;
+  background-image: url(bundle_info_background.svg);
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.results__results-infos-picture {
+  background-image: url(london.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px 5px 0 0;
+}
+.results__results-infos-destination {
+  padding: 0 20px;
+}
+.results__results-infos-description {
+  padding: 0 20px;
+}
+.results__results-infos-flights {
+  padding: 0 20px;
+}
+.results__results-infos-activities {
+  padding: 0 20px;
+}
