@@ -58,13 +58,13 @@
 .results__result-infos-card {
   height: 800px;
   width: 500px;
-  background-image: url-image('bundle_info_background.svg');
+  background-image: image-url(bundle_info_background.svg);
   background-size: cover;
   border-radius: 5px;
 }
 
 .results__results-infos-picture {
-  background-image: url('london.jpg');
+  background-image: image-url('london.jpg');
   background-size: cover;
   width: 100%;
   height: 300px;
