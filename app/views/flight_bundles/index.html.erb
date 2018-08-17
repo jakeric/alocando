@@ -2,8 +2,8 @@
 
   <!-- container on top with the search bar and filters  -->
   <div class="container results__container-head">
-    <div class="results__search-recap">
-      <h3>X results flying from xx and xx from xx to xx</h3>
+    <div class="results__search-recap" style="color: black">
+      <h3><%= @bundle.size %> results flying from xx and xx from xx to xx</h3>
     </div>
   </div>
   <!-- above closing container with the search bar and filters  -->
@@ -14,11 +14,18 @@
     <!-- left side of the screen, with the results cards  -->
     <div class="results__results-list-side">
       <div class="row results__results-list-row">
-        <% @bundle.each do |bundle| %>
-          <div class="col-xs-12">
-            <%= render 'components/bundle_card' %>
+        <% @bundle.each do |flight_bundle| %>
+$          <div class="col-xs-12">
+            <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
           </div>
         <% end %>
+        <div class="col-xs-12">
+          <div class="results-loadmore-circle">
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+            <i class="fas fa-circle"></i>
+          </div>
+        </div>
       </div>
     </div>
     <!-- above is the closing div of the LEFT side of the screen  -->

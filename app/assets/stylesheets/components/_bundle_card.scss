@@ -1,0 +1,45 @@
+
+.bundle-card-backgound {
+  border-radius: 10px;
+  box-shadow: 5px 6px 10px rgba(0,0,0,0.25);
+  background-image: url(bundle_card_row.svg);
+  background-size: cover;
+  width: 500px;
+  height: 130px;
+  padding: 0;
+  position: relative;
+  margin-bottom: 20px;
+}
+.bundle-card-destination {
+  position: absolute;
+  left: 25px;
+  top: 55px;
+  text-align: left;
+  h4 {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 0.7;
+  }
+  span {
+    font-size: 14px;
+    font-weight: lighter;
+  }
+}
+
+.bundle-card-price {
+  position: absolute;
+  right: 13px;
+  top: 40px;
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+  color: $dark-turquoise;
+  font-weight: bolder;
+  h4 {
+    line-height: 0.8;
+    font-weight: bold;
+  }
+  span {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+}
