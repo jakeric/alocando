@@ -1,3 +1,4 @@
+require 'pixabay'
 class FlightBundlesController < ApplicationController
 skip_before_action :authenticate_user!
 
@@ -5,10 +6,12 @@ skip_before_action :authenticate_user!
     # implement search logic here
 
     # input from the search bar (homepage -> params)
-    start_date = Date.today + 1
+    start_date = Date.today + 2
     end_date = Date.today + 3
-    my_city = 'Lisbon'
-    friends_city = 'Berlin'
+    my_city = 'Berlin' # params from url
+    friends_city = 'Munich' # params from url
+
+
 
 
     # search for all the available airports in my city and in the city of my friend
@@ -90,7 +93,12 @@ skip_before_action :authenticate_user!
 
     # sort object by total_price
     @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
-
+    @images_array = []
+  # make the call from Pixabay to get the images.
+    # then store them in to one variable where you store the url the the pixabay just returned you.
+    @image_array << Pixabay.new(width:100, height:100).search(@bundle.first.flight_bundle_flights.first.flight.to_airport.city.name)[0][:url]
+    @image_array << Pixabay.new(width:100, height:100).search(@bundle.first.flight_bundle_flights.first.flight.to_airport.city.name)[1][:url]
+    @image_array << Pixabay.new(width:100, height:100).search(@bundle.first.flight_bundle_flights.first.flight.to_airport.city.name)[2][:url]
     # return @bundle as an array
     return @bundle
   end
