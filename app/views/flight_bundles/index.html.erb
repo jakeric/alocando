@@ -1,26 +1,43 @@
-<h1>Result page (index)</h1>
+<div class="wrapper">
 
-<% @bundle.each do |flight_bundle| %>
-
-  <div style="color:black;">
-    <% first_flight_bundle_flight = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id).first %>
-
-    <h3> <%= first_flight_bundle_flight.flight.to_airport.city.name %>  </h3>
-    <h5> <%= first_flight_bundle_flight.flight.to_airport.city.country %> </h5>
-    <p> Total Price: <%= flight_bundle.total_price  %> € </p>
-    <% all_flights = FlightBundleFlight.where(flight_bundle_id: flight_bundle.id) %>
-    <% x = 0 %>
-      <% all_flights.sort_by {|flight_bundle| flight_bundle.id}.each do |bundle_flight| %>
-        <% arrow = "" %>
-        <% if x == 0 || x == 2 %>
-        <%    arrow = "------->" %>
-        <% else %>
-        <%    arrow = "<-------" %>
-        <% end %>
-        <ul>
-          <li><%= "#{bundle_flight.flight.from_airport.city.name} #{arrow} #{bundle_flight.flight.to_airport.city.name}" %> </li>
-        </ul>
-        <% x += 1 %>
-      <% end %>
+  <!-- container on top with the search bar and filters  -->
+  <div class="container results__container-head">
+    <div class="results__search-recap">
+      <h3>X results flying from xx and xx from xx to xx</h3>
+    </div>
   </div>
-<% end %>
+  <!-- above closing container with the search bar and filters  -->
+
+
+  <div class="container results__container-results">
+
+    <!-- left side of the screen, with the results cards  -->
+    <div class="results__results-list-side">
+      <div class="row results__results-list-row">
+        <% @bundle.each do |bundle| %>
+          <div class="col-xs-12">
+            <%= render 'components/bundle_card' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- above is the closing div of the LEFT side of the screen  -->
+
+    <!-- right side of the screen, with city info  -->
+    <div class="results__results-infos-side">
+      <div class="row results__results-infos-row">
+        <div class="col-xs-12">
+          <div class="results__result-infos-card">
+            <p>Display here info about the destination</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- above is the closing div of the RIGHT side of the screen  -->
+
+  </div>
+  <!-- above is the closing div of the container results  -->
+
+</div>
+
+

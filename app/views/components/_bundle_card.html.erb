@@ -1,0 +1,10 @@
+<div class="bundle-card">
+  <div class="bundle-card-backgound">
+    <div class="bundle-card-destination">
+      <h2><%= @bundle.flight_bundle_flights.first.to_airport.city.name %></h2>
+    </div>
+    <div class="bundle-card-price">
+      <h2><%= @bundle.total_price %></h2>
+    </div>
+  </div>
+</div>
