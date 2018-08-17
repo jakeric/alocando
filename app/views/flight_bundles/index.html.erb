@@ -3,7 +3,15 @@
   <!-- container on top with the search bar and filters  -->
   <div class="container results__container-head">
     <div class="results__search-recap" style="color: black">
-      <h3><%= @bundle.size %> results flying from xx and xx from xx to xx</h3>
+      <h3>
+        <%= @bundle.size %> results flying from
+        <%= params["your-city"] %>
+        and
+        <%= params["friends-city"] %>,
+        from
+        <%= Date.parse(params["start-date"]).strftime("%d/%m/%Y") %> to
+        <%= Date.parse(params["end-date"]).strftime("%d/%m/%Y") %>
+        </h3>
     </div>
   </div>
   <!-- above closing container with the search bar and filters  -->
@@ -33,11 +41,41 @@ $          <div class="col-xs-12">
     <!-- right side of the screen, with city info  -->
     <div class="results__results-infos-side">
       <div class="row results__results-infos-row">
-        <div class="col-xs-12">
+
           <div class="results__result-infos-card">
-            <p>Display here info about the destination</p>
+            <div class="results__results-infos-picture">
+              <!-- put links to images -->
+            </div>
+            <div class="results__results-infos-destination">
+              <h1><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name %></h1>
+              <h4><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.country %></h4>
+            </div>
+            <div class="results__results-infos-description">
+              <p><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.description %></p>
+            </div>
+            <div class="results__results-infos-flights">
+              <h5><%= @bundle.first.flight_bundle_flights[0].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[0].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[1].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[1].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[2].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[2].flight.to_airport.name %></h6>
+
+              <h5><%= @bundle.first.flight_bundle_flights[3].flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @bundle.first.flight_bundle_flights[3].flight.to_airport.name %></h6>
+
+            </div>
+            <div class="results__results-infos-activities">
+
+            </div>
           </div>
-        </div>
+
       </div>
     </div>
     <!-- above is the closing div of the RIGHT side of the screen  -->
