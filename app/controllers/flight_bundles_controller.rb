@@ -5,10 +5,10 @@ skip_before_action :authenticate_user!
     # implement search logic here
 
     # input from the search bar (homepage -> params)
-    start_date = Date.today + 1
-    end_date = Date.today + 3
-    my_city = 'Lisbon'
-    friends_city = 'Berlin'
+    start_date = params["start-date"]
+    end_date = params["end-date"]
+    my_city = params["your-city"]
+    friends_city = params["friends-city"]
 
 
     # search for all the available airports in my city and in the city of my friend
@@ -102,12 +102,6 @@ skip_before_action :authenticate_user!
   end
 
   def destroy
-  end
-
-  private
-
-  def flight_params
-    params.require(:flight_bundle).permit()
   end
 
 end
