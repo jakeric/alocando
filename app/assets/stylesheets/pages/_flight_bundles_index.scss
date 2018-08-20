@@ -80,22 +80,33 @@
 // flights parts
 .results__results-infos-flights {
   padding: 0 20px;
+  position: relative;
 }
 .bubble-flights1 {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  height: 200px;
 }
 .bubble-flights2 {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  height: 200px;
   margin-bottom: 20px;
 }
+.bubble-flights-line-separation {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 180px;
+  img {
+    width: 443px;
+  }
+}
+
 //Details of flights
 #flight-row-title {
-  margin: 15px;
-  padding-top: 5px;
+  margin: 0px;
+  padding-top: 10px;
+  padding-left: 24px;
+  margin-bottom: 10px;
   span {
     color: #216583;
     font-weight: bold;
@@ -111,8 +122,9 @@
   justify-content: start;
   align-items: end;
   margin: auto 15px;
+  margin-top: 13px;
 }
-.flight-row-way {
+.flight-row-airport-departure {
   font-family: 'Raleway', sans-serif !important;
   margin-right: 8px;
   margin-left: 10px;
@@ -126,7 +138,7 @@
     font-size: 12px;
   }
 }
-.flight-row-time-way {
+.flight-row-time-departure {
   font-family: 'Raleway', sans-serif !important;
   margin-right: 8px;
   h4 {
@@ -153,7 +165,7 @@
   padding-top: 5px;
   margin-right: 8px;
 }
-.flight-row-time-back {
+.flight-row-time-arrival {
   font-family: 'Raleway', sans-serif !important;
   margin-right: 8px;
   text-align: center;
@@ -162,7 +174,7 @@
     font-size: 16px;
   }
 }
-.flight-row-back {
+.flight-row-airport-arrival {
   font-family: 'Raleway', sans-serif !important;
   margin-right: 5px;
   h3 {
