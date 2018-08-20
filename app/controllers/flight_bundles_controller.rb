@@ -108,6 +108,9 @@ skip_before_action :authenticate_user!
   end
 
   def show
+    # show the location you chose on the result page
+    @flight_bundle = FlightBundle.find(params[:id])
+    @flight_bundle_flights = @flight_bundle.flight_bundle_flights
   end
 
   def create
