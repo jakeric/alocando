@@ -51,7 +51,7 @@ $          <div class="col-xs-12">
               <h4><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.country %></h4>
             </div>
             <div class="results__results-infos-description">
-              <p><%= @bundle.first.flight_bundle_flights.first.flight.to_airport.city.description %></p>
+              <p><%= truncate(@bundle.first.flight_bundle_flights.first.flight.to_airport.city.description, :length => 100) %></p>
             </div>
             <div class="results__results-infos-flights">
               <h5><%= @bundle.first.flight_bundle_flights[0].flight.from_airport.name %></h5>
