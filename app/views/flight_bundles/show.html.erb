@@ -1,0 +1,40 @@
+<!-- right side of the screen, with city info  -->
+    <div class="results__results-infos-side results-infos-side-margin">
+      <div class="row results__results-infos-row">
+
+          <div class="results__result-infos-card">
+            <div class="results__results-infos-picture">
+              <!-- put links to images -->
+            </div>
+            <div class="results__results-infos-destination">
+              <h1><%= @flight_bundle_flights.first.flight.to_airport.city.name %></h1>
+              <h4><%= @flight_bundle_flights.first.flight.to_airport.city.country %></h4>
+            </div>
+            <div class="results__results-infos-description">
+              <p><%= @flight_bundle_flights.first.flight.to_airport.city.description %></p>
+            </div>
+            <div class="results__results-infos-flights">
+              <h5><%= @flight_bundle_flights.first.flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @flight_bundle_flights.first.flight.to_airport.name %></h6>
+
+              <h5><%= @flight_bundle_flights.first.flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @flight_bundle_flights.first.flight.to_airport.name %></h6>
+
+              <h5><%= @flight_bundle_flights.first.flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @flight_bundle_flights.first.flight.to_airport.name %></h6>
+
+              <h5><%= @flight_bundle_flights.first.flight.from_airport.name %></h5>
+              <i class="fas fa-arrow-down"></i>
+              <h6><%= @flight_bundle_flights.first.flight.to_airport.name %></h6>
+
+            </div>
+            <div class="results__results-infos-activities">
+
+            </div>
+          </div>
+
+      </div>
+    </div>

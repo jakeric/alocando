@@ -6,11 +6,13 @@ skip_before_action :authenticate_user!
     # implement search logic here
 
     # input from the search bar (homepage -> params)
+    date_array = params["start-date"].split(" to ")
 
-    start_date = params["start-date"]
-    end_date = params["end-date"]
-    my_city = params["your-city"].downcase.capitalize!
-    friends_city = params["friends-city"].downcase.capitalize!
+    start_date = date_array[0]
+    end_date = date_array[1]
+    my_city = params["your-city"]
+    friends_city = params["friends-city"]
+
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
@@ -108,6 +110,9 @@ skip_before_action :authenticate_user!
   end
 
   def show
+    # show the location you chose on the result page
+    @flight_bundle = FlightBundle.find(params[:id])
+    @flight_bundle_flights = @flight_bundle.flight_bundle_flights
   end
 
   def create
