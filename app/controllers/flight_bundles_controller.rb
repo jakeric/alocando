@@ -9,8 +9,8 @@ skip_before_action :authenticate_user!
 
     start_date = params["start-date"]
     end_date = params["end-date"]
-    my_city = params["your-city"]
-    friends_city = params["friends-city"]
+    my_city = params["your-city"].downcase.capitalize!
+    friends_city = params["friends-city"].downcase.capitalize!
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
