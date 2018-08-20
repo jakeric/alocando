@@ -9,8 +9,8 @@
         and
         <%= params["friends-city"] %>,
         from
-        <%= Date.parse(params["start-date"]).strftime("%d/%m/%Y") %> to
-        <%= Date.parse(params["end-date"]).strftime("%d/%m/%Y") %>
+        <%= Date.parse(params["start-date"].split(" to ")[0]).strftime("%d/%m/%Y") %> to
+        <%= Date.parse(params["start-date"].split(" to ")[1]).strftime("%d/%m/%Y") %>
         </h3>
     </div>
   </div>
