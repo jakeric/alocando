@@ -24,7 +24,8 @@
       <div class="row results__results-list-row">
         <% @bundle.each do |flight_bundle| %>
 $          <div class="col-xs-12">
-            <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
+            <!-- <%#= render 'components/bundle_card', flight_bundle: flight_bundle %> -->
+             <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundle_path(flight_bundle) %>
           </div>
         <% end %>
         <div class="col-xs-12">
@@ -33,6 +34,7 @@ $          <div class="col-xs-12">
             <i class="fas fa-circle"></i>
             <i class="fas fa-circle"></i>
           </div>
+
         </div>
       </div>
     </div>
