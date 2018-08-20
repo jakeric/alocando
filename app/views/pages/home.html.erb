@@ -33,17 +33,23 @@
         <form action="/flight_bundles" method="get" class="form-inline form-homepage">
 
           <label class="sr-only" for="inlineFormInput">Your city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" data-list="Berlin, Madrid, Paris, Lisbon, Munich">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" list="mylist">
 
-            <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city">
+          <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city" list="mylist">
+
+          <!-- list for the autocomplete -->
+          <datalist id="mylist">
+            <% City.all.each do |city| %>
+            <option> <%= city.name %> </option>
+            <% end %>
+          </datalist>
 
           <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
 
         <div class="buoy-show-datepicker input-padding" >
           <div class="datepicker-field">
             <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date" name="start-date">
-            <!-- <input type="text" class="form-control hidden mb-2 mr-sm-2" id="inlineFormEndInputDate" name="end-date"> -->
           </div>
         </div >
         <div class="datepicker-submit">
@@ -151,6 +157,8 @@
         </div>
       </div>
     </div>
+
+
 
 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
