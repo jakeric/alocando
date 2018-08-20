@@ -6,9 +6,10 @@ skip_before_action :authenticate_user!
     # implement search logic here
 
     # input from the search bar (homepage -> params)
+    date_array = params["start-date"].split(" to ")
 
-    start_date = params["start-date"]
-    end_date = params["end-date"]
+    start_date = date_array[0]
+    end_date = date_array[1]
     my_city = params["your-city"]
     friends_city = params["friends-city"]
 
