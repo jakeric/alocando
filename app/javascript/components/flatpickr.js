@@ -8,7 +8,7 @@ const toggleDateInputs = function() {
     allowInput: true,
     mode: "range",
     minDate: 'today',
-    dateFormat: "Y-m-d",
+    dateFormat: "Y-m-d"
     // onChange: function(_, selectedDate) {
     // // function(_, selectedDate) {
     //   let splitted = selectedDate.split(" to ");
@@ -18,4 +18,4 @@ const toggleDateInputs = function() {
   });
 };
 
-export { toggleDateInputs }
+export { toggleDateInputs };
