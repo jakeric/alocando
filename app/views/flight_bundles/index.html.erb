@@ -23,7 +23,7 @@
     <div class="results__results-list-side">
       <div class="row results__results-list-row">
         <% @bundle.each do |flight_bundle| %>
-$          <div class=" link col-xs-12" >
+$          <div class=" link-color-hover col-xs-12" >
             <!-- <%#= render 'components/bundle_card', flight_bundle: flight_bundle %> -->
              <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundle_path(flight_bundle), {:style=>"color:#fff;"} %>
           </div>
