@@ -4,11 +4,13 @@
   box-shadow: 5px 6px 10px rgba(0,0,0,0.25);
   background-image: image-url("bundle_card_row.svg");
   background-size: cover;
-  width: 500px;
-  height: 130px;
+  width: 510px;
+  height: 127px;
   padding: 0;
   position: relative;
   margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 .bundle-card-destination {
   position: absolute;

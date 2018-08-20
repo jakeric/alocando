@@ -17,6 +17,9 @@
   display: flex;
   margin-top: 30px;
   padding-bottom: 30px;
+  width: auto;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 
@@ -25,7 +28,9 @@
   flex-basis:50%;
   flex-grow: 0;
 }
-.results__results-list-row {}
+.results__results-list-row {
+  width: auto;
+}
 
 .results-loadmore-circle {
   width: 45px;
@@ -53,12 +58,13 @@
 }
 .results__results-infos-row {
   display: flex;
+  width: auto;
   justify-content: center;
 }
 .results__result-infos-card {
-  height: 800px;
-  width: 500px;
-  background-image: image-url("bundle_info_background.svg");
+  // height: 800px;
+  width: 90%;
+  background-image: image-url("bckgrnd.svg");
   background-size: cover;
   border-radius: 5px;
 }
@@ -66,21 +72,183 @@
 .results__results-infos-picture {
   background-image: image-url("london.jpg");
   background-size: cover;
-  width: 100%;
+  width: 99.4%;
   height: 300px;
   border-radius: 5px 5px 0 0;
 }
 .results__results-infos-destination {
   padding: 0 20px;
+  margin: 20px;
+  h1 {
+    font-size: 26px;
+    font-weight: bold !important;
+    margin-bottom: 3px;
+  }
+  h4 {
+    font-size: 14px;
+    margin-top: 3px;
+  }
 }
 .results__results-infos-description {
   padding: 0 20px;
 }
+
+// flights parts
 .results__results-infos-flights {
   padding: 0 20px;
+  position: relative;
+  margin: 20px;
 }
+.bubble {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+}
+.bubble-flights-line-separation {
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 170px;
+  left: 34px;
+  img {
+    width: 100%;
+  }
+}
+
+//Details of flights
+#flight-row-title {
+  margin: 0px;
+  padding-top: 10px;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  span {
+    color: #216583;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+  }
+}
+
+.bubble-flights-row {
+  color: #5E5E5E;
+  font-family: 'Raleway', sans-serif !important;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  margin: auto 15px;
+  margin-top: 13px;
+}
+.flight-row-airport-departure {
+  font-family: 'Raleway', sans-serif !important;
+  margin-right: 8px;
+  margin-left: 10px;
+  text-align: center;
+  h3 {
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+.flight-row-time-departure {
+  font-family: 'Raleway', sans-serif !important;
+  margin-right: 8px;
+  h4 {
+    margin-top: 9px;
+    font-size: 16px;
+  }
+}
+.flight-row-line {
+  font-family: 'Raleway', sans-serif !important;
+  width: 90px;
+  text-align: center;
+  margin-right: 3px;
+  h2 {
+    border-bottom: 3px solid $dark-turquoise;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 3px;
+  }
+  p {
+   font-size: 10px;
+  }
+}
+.flight-row-planeicon {
+  padding-top: 5px;
+  margin-right: 8px;
+}
+.flight-row-time-arrival {
+  font-family: 'Raleway', sans-serif !important;
+  margin-right: 8px;
+  text-align: center;
+  h4 {
+    margin-top: 9px;
+    font-size: 16px;
+  }
+}
+.flight-row-airport-arrival {
+  font-family: 'Raleway', sans-serif !important;
+  margin-right: 5px;
+  h3 {
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+.flight-row-airline {
+  font-family: 'Raleway', sans-serif !important;
+  padding-top: 15px;
+  margin-left: 40px;
+  font-size: 14px;
+}
+
+
+// activities bubble
 .results__results-infos-activities {
   padding: 0 20px;
+  margin: 20px;
+}
+
+.row-destination-activities {
+  color: #5E5E5E;
+  margin: auto 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+    font-size: bold;
+  }
+  p {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+}
+.activities-list {
+  margin-bottom: 20px;
+}
+
+
+// quotes bubble
+.results__results-infos-quotes {
+  padding: 0 20px;
+  margin: 20px;
+}
+
+.row-destination-quote {
+  color: #5E5E5E;
+  margin: auto 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.destination-quote {
+  p {
+    text-align: right;
+  }
 }
 
 .link-color-hover h4:hover {
