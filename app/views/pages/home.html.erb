@@ -33,7 +33,7 @@
         <form action="/flight_bundles" method="get" class="form-inline form-homepage">
 
           <label class="sr-only" for="inlineFormInput">Your city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputCity" placeholder="Your city" name="your-city">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" data-list="Berlin, Madrid, Paris, Lisbon, Munich">
 
             <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
           <input type="text" required class="input-padding form-control mb-2 mr-sm-2" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city">
@@ -56,26 +56,6 @@
       </div>
     </div>
   </div>
-
-<!-- Datepicker
-  <div class="buoy-show-datepicker" disable-dates= " <%= @date_json %> " >
-    <div class="col-xs-12">
-      <%#= simple_form_for [@flight] do |f| %>
-      <div class="form-row">
-        <div class="datepicker-field">
-          <div>
-          <%#= f.input :start_date, as: :string, wrapper_html: { :class => "inline_field_wrapper" }, label: 'Select dates'%>
-          <%#= f.input :end_date, as: :hidden, wrapper_html: { :class => "inline_field_wrapper" } %>
-          </div>
-
-          <div class="datepicker-submit">
-          <%#= f.button :submit, :disabled => @user_not_logged, class: 'btn btn-primary' %>
-          </div>
-        </div>
-      </div>
-      <#% end %>
-    </div>
-  </div> -->
 
 <!-- How to area -->
     <div class="wrapper-grey">
