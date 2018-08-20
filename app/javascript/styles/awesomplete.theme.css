@@ -55,8 +55,8 @@
   }
 
   .awesomplete > ul > li[aria-selected="true"] {
-    background: hsl(205, 40%, 40%);
-    color: white;
+    background: #CAE3E1;
+    color: black;
   }
 
   .awesomplete mark {
@@ -71,3 +71,7 @@
     background: transparent;
     color: inherit;
   }
+
+ input::-webkit-calendar-picker-indicator {
+  display: none;
+}
