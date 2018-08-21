@@ -1,14 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-
-# flight = Flight.new(departure_datetime: Date.today, arrival_datetime: Date.today+1, price: 99.2, flight_duration: 17)
 
 # Seed of cities and airports
 
-if City.count != 3477
+if City.count != 100
   # destroy all existing Airport datasets
   puts "detroy all airports..."
   Airport.destroy_all
+  City.destroy_all
   puts "airports destroyed"
 
   # parsing all airports and cities
@@ -20,11 +17,11 @@ if City.count != 3477
   puts "creating the airports and cities..."
 
   airports.each do |airport|
-    airport_code = airport["code"]
-    airport_name = airport["name"]
-    city_name = airport["city"]
-    city_country = airport["country"]
-    city_timezone = airport["tz"]
+    airport_code = airport.last["iata"]
+    airport_name = airport.last["name"]
+    city_name = airport.last["city"]
+    city_country = airport.last["country"]
+    city_timezone = airport.last["timezone"]
 
     # get city or create a new one
     if City.where("name = ?", city_name) == []
@@ -82,7 +79,7 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 0
+if Flight.count != 4000
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -95,11 +92,11 @@ if Flight.count != 0
   # average speed of a plane 885 km/hr
   airplane_speed = 885.0
 
-  4000.times do
+  8000.times do
     # get random start and end airport
 
     # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest
-    start_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD', 'BTS', 'XZO', 'RKV', 'FCO', 'YNG', 'WAW', 'XEV', 'BUD'].sample
+    start_airport = [ ,'TXL','SXF','LGW', 'LHR', ].sample
 
     # search for start airport city
     start_airport = Airport.where(acronym: start_airport)
@@ -121,7 +118,7 @@ if Flight.count != 0
 
     # calculate random start date
     departure_hour = rand(1..24)
-    day_range = rand(1..7)
+    day_range = rand(1..10)
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
     # distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
@@ -162,24 +159,24 @@ else
 end
 
 
-# city description
-# all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest']
-# all_cities.each do |city|
+city description
+all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest']
+all_cities.each do |city|
 
-#   # get data from distance24 API
-#   distance_url = "https://www.distance24.org/route.json?stops=#{city}|Tokyo"
-#   distance_serialized = open(distance_url).read
-#   distance = JSON.parse(distance_serialized)
-#   description = distance["stops"][0]["wikipedia"]["abstract"]
+  # get data from distance24 API
+  distance_url = "https://www.distance24.org/route.json?stops=#{city}|Tokyo"
+  distance_serialized = open(distance_url).read
+  distance = JSON.parse(distance_serialized)
+  description = distance["stops"][0]["wikipedia"]["abstract"]
 
-#   # update the description of the city
-#   city_to_update = City.where(name: city).first
-#   city_to_update.description = description
+  # update the description of the city
+  city_to_update = City.where(name: city).first
+  city_to_update.description = description
 
-#   # insert acitivities when we find something
+  # insert acitivities when we find something
 
-#   # save city
-#   city_to_update.save
-# end
+  # save city
+  city_to_update.save
+end
 
 puts "You have just been seeded Duuuude."
