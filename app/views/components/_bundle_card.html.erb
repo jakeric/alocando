@@ -3,7 +3,7 @@
 
     <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
 
-    <div class="bundle-card-outline">
+    <div class="bundle-card-outline" id="left-card">
       <div class="bundle-card-destination">
         <h4><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name %><br><span><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.country %></span></h4>
       </div>
