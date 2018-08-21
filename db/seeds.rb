@@ -1,7 +1,7 @@
 
 # Seed of cities and airports
 
-if City.count != 5300
+if City.count != 1
   # destroy all existing Airport datasets
   puts "detroy all airports..."
   Airport.destroy_all
@@ -45,7 +45,7 @@ end
 
 # Seed of the airlines
 
-if Airline.count != 806
+if Airline.count != 1
   # destroy all existing Airport datasets
   puts "detroy all airlines and flights..."
   Airline.destroy_all
