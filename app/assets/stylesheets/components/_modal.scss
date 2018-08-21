@@ -1,0 +1,36 @@
+.modal-book {
+  color: black;
+}
+
+  .book-dialog {
+    width: 900px;
+  }
+
+.modal-body-cover {
+}
+
+.text-center {
+  text-align: center;
+  justify-content: center;
+}
+
+.container-modal-image img {
+  max-width: 420px;
+}
+
+.container-modal-text {
+  padding: 0px 30px;
+  h4 {
+    margin-bottom: 30px;
+    margin-top: 60px;
+  }
+  .btn-modal {
+    margin: 5px 5px 30px;
+    background-color: #F7A442;
+    border: none;
+  }
+
+.btn-modal:active{
+    background:#F7A442;
+}
+}

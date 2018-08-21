@@ -7,18 +7,40 @@
 
 <!-- Modal -->
 <div class="modal fade modal-book" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog book-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header ">
          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-
-
+        <h5 class="modal-title" id="exampleModalLabel">Book your flight</h5>
       </div>
-      <div class="modal-body">
-          <p>Choose your starting location:</p>
+
+      <div class="modal-body modal-body-cover">
+        <div class="container-modal-text">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <h4>Please choose your starting location</h4>
+              <button type="button" class="btn btn-primary btn-modal" ><%= params["your-city"].split(" (")[0] %></button>
+              <button type="button" class="btn btn-primary btn-modal"><%= params["friends-city"].split(" (")[0] %></button>
+              <p>Your flight: </p>
+              <p>Your friends flight:</p>
+              <p>Be fair and share the bill. </p>
+              <p> You owe your friend .</p>
+            </div>
+            <div class="col-md-6">
+              <div class="container-modal-image">
+                <%= image_tag "friends.png" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- <p>Choose your starting location:</p>
           <button type="button" class="btn btn-primary btn-lg" >
   city 1</button>
  <button type="button" class="btn btn-primary btn-lg">
@@ -28,13 +50,11 @@
       <p>Be fair and share the bill. You owe your friend 50 Euro.</p>
 
       </div>
-      <!-- <div class="modal-footer">
+       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
       </div> -->
-    </div>
-  </div>
-</div>
+
 
 
   <!-- container on top with the search bar, the recap and filters  -->
