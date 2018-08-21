@@ -8,8 +8,31 @@
   color: white;
 }
 .alert-info {
-  background: $green;
+  background: $dark-turquoise !important;
+  color: white !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 24px;
+  height: 300px;
+  z-index: 1;
+  border: none !important;
+  position: absolute;
+  opacity: 0.9;
+  text-align: center;
+  width: 100%;
+  h2 {
+    margin-top: 100px;
+    height: 40px;
+  }
+  span {
+    color: white !important;
+    opacity: 1;
+    font-size: 44px;
+  }
 }
+
+
+
+
 .alert-warning {
   background: $red;
 }
