@@ -60,7 +60,7 @@
         <% @bundle.each do |flight_bundle| %>
         <div class=" link-color-hover col-xs-12" >
 
-          <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true %>
+          <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
 
         <!-- Button for the Modal -->
 
