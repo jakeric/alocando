@@ -1,5 +1,42 @@
 <div class="wrapper">
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Book
+</button>
+
+<!-- Modal -->
+<div class="modal fade modal-book" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+
+
+      </div>
+      <div class="modal-body">
+          <p>Choose your starting location:</p>
+          <button type="button" class="btn btn-primary btn-lg" >
+  city 1</button>
+ <button type="button" class="btn btn-primary btn-lg">
+  city 2</button>
+  <p>Preis ab "Your City":</p>
+   <p>Preis ab "Your Friends City":</p>
+      <p>Be fair and share the bill. You owe your friend 50 Euro.</p>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
   <!-- container on top with the search bar, the recap and filters  -->
   <div class="container results__container-head">
 
@@ -62,6 +99,7 @@ $          <div class=" link-color-hover col-xs-12" >
             <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
 
             <!-- <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundle_path(flight_bundle), {:style=>"color:#fff;"} %> -->
+
           </div>
         <% end %>
         <div class="col-xs-12">
