@@ -46,15 +46,15 @@
         <form action="/flight_bundles" method="get" class="form-inline form-homepage">
 
           <label class="sr-only" for="inlineFormInput">Your city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" list="mylist">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" list="mylist" style="color: black">
 
           <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
-          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city" list="mylist">
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city" list="mylist" style="color: black">
 
           <!-- list for the autocomplete -->
           <datalist id="mylist">
             <% City.all.each do |city| %>
-            <option> <%= city.name %> </option>
+            <option> <%= "#{city.name} (#{city.country})" %> </option>
             <% end %>
           </datalist>
 
@@ -62,7 +62,7 @@
 
         <div class="buoy-show-datepicker input-padding" >
           <div class="datepicker-field">
-            <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date" name="start-date">
+            <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date" name="start-date" style="color: black">
           </div>
         </div >
         <div class="datepicker-submit">
@@ -98,7 +98,6 @@
 $          <div class=" link-color-hover col-xs-12" >
 
             <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true %>
-
 
           </div>
         <% end %>
