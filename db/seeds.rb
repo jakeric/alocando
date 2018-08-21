@@ -13,7 +13,7 @@ if City.count != 3477
 
   # parsing all airports and cities
   puts "get data from json..."
-  airport_url = 'https://gist.githubusercontent.com/tdreyno/4278655/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json'
+  airport_url = 'https://raw.githubusercontent.com/ram-nadella/airport-codes/master/airports.json'
   airports_serialized = open(airport_url).read
   airports = JSON.parse(airports_serialized)
 
@@ -82,7 +82,7 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 2000
+if Flight.count != 0
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -121,7 +121,7 @@ if Flight.count != 2000
 
     # calculate random start date
     departure_hour = rand(1..24)
-    day_range = rand(1..10)
+    day_range = rand(1..7)
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
     # distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"

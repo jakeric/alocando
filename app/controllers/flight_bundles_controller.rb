@@ -94,17 +94,24 @@ skip_before_action :authenticate_user!
     # sort object by total_price
     @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
 
+    # build an array with all destination cities
+    destination_cities = []
+
+    @bundle.each do |flight_bundle|
+      destination_city = flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
+      if destination_cities.include?(destination_city)
+        @bundle.delete(flight_bundle)
+      else
+        destination_cities << flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
+      end
+    end
+
     @image_array = []
-    destation_city = @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name
-    Pixabay.new(width:100, height:100).search(destation_city).each { |el| @image_array << el[:url] }
+    first_destination_city = @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name
 
-  # make the call from Pixabay to get the images.
+    # make the call from Pixabay to get the images.
+    Pixabay.new(width:100, height:100).search(first_destination_city).each { |el| @image_array << el[:url] }
 
-
-    # then store them in to one variable where you store the url the the pixabay just returned you.
-    # @image_array.push(Pixabay.new(width:100, height:100).search(destation_city)[0][:url])
-    # @image_array << Pixabay.new(width:100, height:100).search(destation_city)[1][:url]
-    # @image_array << Pixabay.new(width:100, height:100).search(destation_city)[2][:url]
     # return @bundle as an array
     return @bundle
   end
