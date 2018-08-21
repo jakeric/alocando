@@ -96,7 +96,8 @@ skip_before_action :authenticate_user!
 
     if @bundle.size == 0
       flash[:notice] = 'We are really sorry, we couldn\'t find any flights matching your search...'
-      redirect_to home_path
+      redirect_back(fallback_location: home_path)
+
     else
       # sort object by total_price
       @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
