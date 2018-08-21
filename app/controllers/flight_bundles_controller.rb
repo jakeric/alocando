@@ -3,16 +3,18 @@ class FlightBundlesController < ApplicationController
 skip_before_action :authenticate_user!
 
   def index
-    # implement search logic here
 
+    # implement search logic here
+    #byebug
     # input from the search bar (homepage -> params)
-    date_array = params["start-date"].split(" to ")
+    date_array = flight_bundle_params["start-date"].split(" to ")
 
     start_date = date_array[0]
     end_date = date_array[1]
-    my_city = params["your-city"]
-    friends_city = params["friends-city"]
+    my_city = flight_bundle_params["your-city"]
+    friends_city = flight_bundle_params["friends-city"]
 
+    @search_params =  {"your-city": my_city, "friends-city": friends_city, "start-date": flight_bundle_params["start-date"]}
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
@@ -112,8 +114,11 @@ skip_before_action :authenticate_user!
     # make the call from Pixabay to get the images.
     Pixabay.new(width:100, height:100).search(first_destination_city).each { |el| @image_array << el[:url] }
 
-    # return @bundle as an array
-    return @bundle
+    if flight_bundle_params.key?('flight_bundle')
+      @bundle_id = flight_bundle_params["flight_bundle"]
+    else
+      @bundle_id = @bundle[0].id
+    end
   end
 
   def show
@@ -126,6 +131,12 @@ skip_before_action :authenticate_user!
   end
 
   def destroy
+  end
+
+  private
+
+  def flight_bundle_params
+   params.permit("your-city", "friends-city", "start-date", "flight_bundle")
   end
 
 end
