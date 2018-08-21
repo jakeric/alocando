@@ -1,22 +1,57 @@
 <div class="wrapper">
 
-  <!-- container on top with the search bar and filters  -->
+  <!-- container on top with the search bar, the recap and filters  -->
   <div class="container results__container-head">
-    <div class="results__search-recap" style="color: black">
+
+    <!-- search input -->
+    <div class="results__search-input">
+      <div class="results__search-form">
+        <form action="/flight_bundles" method="get" class="form-inline form-homepage">
+
+          <label class="sr-only" for="inlineFormInput">Your city</label>
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputCity" placeholder="Your city" name="your-city" list="mylist">
+
+          <label class="sr-only" for="inlineFormInputName2">Your friend's city</label>
+          <input type="text" required class="input-padding form-control mb-2 mr-sm-2 awesomplete" id="inlineFormInputFriendCity" placeholder="Your friend's city" name="friends-city" list="mylist">
+
+          <!-- list for the autocomplete -->
+          <datalist id="mylist">
+            <% City.all.each do |city| %>
+            <option> <%= city.name %> </option>
+            <% end %>
+          </datalist>
+
+          <label class="sr-only" for="inlineFormInput">Start and Return Date</label>
+
+        <div class="buoy-show-datepicker input-padding" >
+          <div class="datepicker-field">
+            <input type="text" required class="form-control mb-2 mr-sm-2" id="inlineFormStartInputDate" placeholder="Start and Return Date" name="start-date">
+          </div>
+        </div >
+        <div class="datepicker-submit">
+          <button type="submit" class="btn btn-orange mb-2">Search</button>
+        </div>
+        </form>
+      </div>
+    </div>
+    <!-- Above is closing of search input -->
+
+    <div class="results__search-recap">
       <h3>
         <%= @bundle.size %> results flying from
-        <%= params["your-city"] %>
+        <strong><%= params["your-city"] %></strong>
         and
-        <%= params["friends-city"] %>,
+        <strong><%= params["friends-city"] %></strong>,
         from
-        <%= Date.parse(params["start-date"].split(" to ")[0]).strftime("%d/%m/%Y") %> to
-        <%= Date.parse(params["start-date"].split(" to ")[1]).strftime("%d/%m/%Y") %>
+        <strong><%= Date.parse(params["start-date"].split(" to ")[0]).strftime("%d/%m/%Y") %></strong>
+        to
+        <strong><%= Date.parse(params["start-date"].split(" to ")[1]).strftime("%d/%m/%Y") %></strong>
         </h3>
     </div>
   </div>
   <!-- above closing container with the search bar and filters  -->
 
-
+  <!-- XXXX NEW CONTAINER - WITH RESULTS AND CITY INFO -->
   <div class="container results__container-results">
 
     <!-- left side of the screen, with the results cards  -->
@@ -24,8 +59,9 @@
       <div class="row results__results-list-row">
         <% @bundle.each do |flight_bundle| %>
 $          <div class=" link-color-hover col-xs-12" >
-            <!-- <%#= render 'components/bundle_card', flight_bundle: flight_bundle %> -->
-             <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundle_path(flight_bundle), {:style=>"color:#fff;"} %>
+            <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
+
+            <!-- <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundle_path(flight_bundle), {:style=>"color:#fff;"} %> -->
           </div>
         <% end %>
         <div class="col-xs-12">
