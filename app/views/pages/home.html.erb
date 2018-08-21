@@ -41,7 +41,7 @@
           <!-- list for the autocomplete -->
           <datalist id="mylist">
             <% City.all.each do |city| %>
-            <option> <%= city.name %> </option>
+            <option> <%= "#{city.name} (#{city.country})" %> </option>
             <% end %>
           </datalist>
 

@@ -11,10 +11,11 @@ skip_before_action :authenticate_user!
 
     start_date = date_array[0]
     end_date = date_array[1]
-    my_city = flight_bundle_params["your-city"]
-    friends_city = flight_bundle_params["friends-city"]
+    my_city = flight_bundle_params["your-city"].split(" (")[0]
+    friends_city = flight_bundle_params["friends-city"].split(" (")[0]
 
     @search_params =  {"your-city": my_city, "friends-city": friends_city, "start-date": flight_bundle_params["start-date"]}
+
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)
@@ -96,7 +97,7 @@ skip_before_action :authenticate_user!
     # sort object by total_price
     @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
 
-    # build an array with all destination cities
+    # build an array with all destination cities and delete the duplicates which are more expansive
     destination_cities = []
 
     @bundle.each do |flight_bundle|
