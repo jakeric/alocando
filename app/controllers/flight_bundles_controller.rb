@@ -115,10 +115,10 @@ skip_before_action :authenticate_user!
       end
 
       @image_array = []
-      first_destination_city = @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name
+      @bundle.each do |trip|
+        Pixabay.new(width:100, height:100).search(trip.flight_bundle_flights.first.flight.to_airport.city.to_s).each { |el| @image_array << el[:url] }
+      end
 
-      # make the call from Pixabay to get the images.
-      Pixabay.new(width:100, height:100).search(first_destination_city).each { |el| @image_array << el[:url] }
 
       if flight_bundle_params.key?('flight_bundle')
         @bundle_id = flight_bundle_params["flight_bundle"]
