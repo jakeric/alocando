@@ -94,7 +94,7 @@ skip_before_action :authenticate_user!
     # sort object by total_price
     @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
 
-    # build an array with all destination cities
+    # build an array with all destination cities and delete the duplicates which are more expansive
     destination_cities = []
 
     @bundle.each do |flight_bundle|
