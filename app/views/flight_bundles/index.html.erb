@@ -96,9 +96,9 @@
     <div class="results__search-recap">
       <h3>
         <%= @bundle.size %> results flying from
-        <strong><%= params["your-city"] %></strong>
+        <strong><%= params["your-city"].split(" ")[0] %></strong>
         and
-        <strong><%= params["friends-city"] %></strong>,
+        <strong><%= params["friends-city"].split(" ")[0] %></strong>,
         from
         <strong><%= Date.parse(params["start-date"].split(" to ")[0]).strftime("%d/%m/%Y") %></strong>
         to

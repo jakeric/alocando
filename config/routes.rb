@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'pages#home', as: 'home'
   devise_for :users
 
   resources :flight_bundles, only: [:index, :show, :create, :destroy]

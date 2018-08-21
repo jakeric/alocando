@@ -94,31 +94,36 @@ skip_before_action :authenticate_user!
       end
     end
 
-    # sort object by total_price
-    @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
-
-    # build an array with all destination cities and delete the duplicates which are more expansive
-    destination_cities = []
-
-    @bundle.each do |flight_bundle|
-      destination_city = flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
-      if destination_cities.include?(destination_city)
-        @bundle.delete(flight_bundle)
-      else
-        destination_cities << flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
-      end
-    end
-
-    @image_array = []
-    first_destination_city = @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name
-
-    # make the call from Pixabay to get the images.
-    Pixabay.new(width:100, height:100).search(first_destination_city).each { |el| @image_array << el[:url] }
-
-    if flight_bundle_params.key?('flight_bundle')
-      @bundle_id = flight_bundle_params["flight_bundle"]
+    if @bundle.size == 0
+      flash[:notice] = 'We are really sorry, we couldn\'t find any flights matching your search...'
+      redirect_to home_path
     else
-      @bundle_id = @bundle[0].id
+      # sort object by total_price
+      @bundle.replace @bundle.sort_by {|flight_bundle| flight_bundle.total_price}
+
+      # build an array with all destination cities and delete the duplicates which are more expansive
+      destination_cities = []
+
+      @bundle.each do |flight_bundle|
+        destination_city = flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
+        if destination_cities.include?(destination_city)
+          @bundle.delete(flight_bundle)
+        else
+          destination_cities << flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
+        end
+      end
+
+      @image_array = []
+      first_destination_city = @bundle.first.flight_bundle_flights.first.flight.to_airport.city.name
+
+      # make the call from Pixabay to get the images.
+      Pixabay.new(width:100, height:100).search(first_destination_city).each { |el| @image_array << el[:url] }
+
+      if flight_bundle_params.key?('flight_bundle')
+        @bundle_id = flight_bundle_params["flight_bundle"]
+      else
+        @bundle_id = @bundle[0].id
+      end
     end
   end
 
