@@ -1,14 +1,21 @@
 
   <div class="bundle-card-backgound">
 
-    <div class="bundle-card-destination">
-      <h4><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name %><br><span><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.country %></span></h4>
+    <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
+
+    <div class="bundle-card-outline" id="left-card">
+      <div class="bundle-card-destination">
+        <h4><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name %><br><span><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.country %></span></h4>
+      </div>
+
+      <div class="bundle-card-price">
+        <h4><%= flight_bundle.total_price.to_i %>€<br><span>for two</span></h4>
+      </div>
     </div>
 
-    <div class="bundle-card-price">
-      <h4><%= flight_bundle.total_price.to_i %>€<br><span>for two</span></h4>
-    </div>
+    <% end %>
 
   </div>
+
 
 

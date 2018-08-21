@@ -11,6 +11,16 @@
   margin-bottom: 20px;
   margin-top: 20px;
   margin-left: 30px;
+  &:hover {
+    box-shadow: 8px 9px 13px rgba(0,0,0,0.25);
+  }
+  &:active {
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.35);
+  }
+}
+.bundle-card-outline {
+  height: 100%;
+  border-radius: 10px;
 }
 .bundle-card-destination {
   position: absolute;

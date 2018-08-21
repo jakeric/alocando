@@ -37,6 +37,7 @@
     <!-- Above is closing of search input -->
 
     <div class="results__search-recap">
+      <h1><%= @image_array %></h1>
       <h3>
         <%= @bundle.size %> results flying from
         <strong><%= params["your-city"].split(" ")[0] %></strong>
@@ -60,7 +61,7 @@
         <% @bundle.each do |flight_bundle| %>
         <div class=" link-color-hover col-xs-12" >
 
-          <%= link_to (render 'components/bundle_card', flight_bundle: flight_bundle), flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true %>
+          <%= render 'components/bundle_card', flight_bundle: flight_bundle %>
 
         <!-- Button for the Modal -->
 
