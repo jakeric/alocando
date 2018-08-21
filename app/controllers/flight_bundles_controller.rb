@@ -7,12 +7,11 @@ skip_before_action :authenticate_user!
 
     # input from the search bar (homepage -> params)
     date_array = params["start-date"].split(" to ")
+    my_city = params["your-city"].split(" (")[0]
+    friends_city = params["friends-city"].split(" (")[0]
 
     start_date = date_array[0]
     end_date = date_array[1]
-    my_city = params["your-city"]
-    friends_city = params["friends-city"]
-
 
     # search for all the available airports in my city and in the city of my friend
     my_airport_ids = Airport.includes(:city).where(cities: { name: my_city }).pluck(:id)

@@ -1,7 +1,7 @@
 
 # Seed of cities and airports
 
-if City.count != 100
+if City.count != 5300
   # destroy all existing Airport datasets
   puts "detroy all airports..."
   Airport.destroy_all
@@ -24,7 +24,7 @@ if City.count != 100
     city_timezone = airport.last["timezone"]
 
     # get city or create a new one
-    if City.where("name = ?", city_name) == []
+    if City.where("name = ? and country = ?", city_name, city_country) == [] && city_country != 'Canada'
       new_city = City.new(name: city_name, country: city_country, timezone: city_timezone)
       new_city.save
       new_airport = Airport.new(name: airport_name, acronym: airport_code)
@@ -79,7 +79,7 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 4000
+if Flight.count != 8000
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -92,11 +92,11 @@ if Flight.count != 4000
   # average speed of a plane 885 km/hr
   airplane_speed = 885.0
 
-  8000.times do
+  10000.times do
     # get random start and end airport
 
-    # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest
-    start_airport = [ ,'TXL','SXF','LGW', 'LHR', ].sample
+    # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest, Athen, Dublin
+    start_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'ATH', 'DUB'].sample
 
     # search for start airport city
     start_airport = Airport.where(acronym: start_airport)
@@ -105,7 +105,7 @@ if Flight.count != 4000
 
     exclude_airports = Airport.where(city_id: start_airport[0].city_id).pluck(:acronym)
 
-    end_airport = ['TXL','SXF','ORY','ZMU', 'LIS', 'LCY', 'ZDU', 'MAD', 'BTS', 'XZO', 'RKV', 'FCO', 'YNG', 'WAW', 'XEV', 'BUD']
+    end_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'ATH', 'DUB']
     end_airport = end_airport - exclude_airports
     end_airport = end_airport.sample
 
@@ -118,21 +118,17 @@ if Flight.count != 4000
 
     # calculate random start date
     departure_hour = rand(1..24)
-    day_range = rand(1..10)
+    day_range = rand(1..20)
     departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
 
-    # distance_url = "https://www.distance24.org/route.json?stops=#{city_one}|#{city_two}"
-    # distance_serialized = open(distance_url).read
-    # distance = JSON.parse(distance_serialized)
-
     # distance_km = distance["distance"]
-    distance_km = 2316.0 # distance Lisbon - Berlin
+    distance_km = [2316.0, 2000.0, 1600.0, 1400.0, 900.0].sample
     flight_duration = distance_km / airplane_speed
     # time_offset_hours = distance["travel"]["timeOffset"]["offsetMins"] / 60
 
     arrival_datetime = departure_datetime + (flight_duration / 24.0) #+ time_offset_hours
 
-    price = rand(15..450)
+    price = rand(15..449)
 
     new_flight = Flight.new(
       departure_datetime: departure_datetime,
@@ -144,22 +140,20 @@ if Flight.count != 4000
       airline_id: airline.ids.first
       )
     new_flight.save
-    puts "100 flights created" if Flight.count == 100
-    puts "200 flights created" if Flight.count == 200
-    puts "300 flights created" if Flight.count == 300
-    puts "400 flights created" if Flight.count == 400
-    puts "500 flights created" if Flight.count == 500
-    puts "600 flights created" if Flight.count == 600
-    puts "700 flights created" if Flight.count == 700
-    puts "800 flights created" if Flight.count == 800
-    puts "900 flights created" if Flight.count == 900
+    puts "1000 flights" if Flight.count == 1000
+    puts "2000 flights" if Flight.count == 2000
+    puts "3000 flights" if Flight.count == 3000
+    puts "4000 flights" if Flight.count == 4000
+    puts "5000 flights" if Flight.count == 5000
+    puts "6000 flights" if Flight.count == 6000
+    puts "7000 flights" if Flight.count == 7000
   end
 else
   puts "There are already 1000 flights, Sir."
 end
 
 
-city description
+# city description
 all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest']
 all_cities.each do |city|
 
