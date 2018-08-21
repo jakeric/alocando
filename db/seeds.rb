@@ -85,14 +85,14 @@ if Flight.count != 8000
   number_of_flights = Flight.count
   FlightBundleFlight.destroy_all
   FlightBundle.destroy_all
-  Flight.destroy_all
+  # Flight.destroy_all
   puts "#{number_of_flights} has been deleted."
 
   puts "creating flights..."
   # average speed of a plane 885 km/hr
   airplane_speed = 885.0
 
-  10000.times do
+  20000.times do
     # get random start and end airport
 
     # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest, Athen, Dublin
@@ -114,12 +114,16 @@ if Flight.count != 8000
     city_two = end_airport[0].city.name
 
     # get random airline
-    airline = Airline.limit(1).order("RANDOM()")
+    # airline = Airline.limit(1).order("RANDOM()")
+    random_airline = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Germanwings', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air']
+    airline = Airline.where(name: random_airline).first
 
     # calculate random start date
-    departure_hour = rand(1..24)
-    day_range = rand(1..20)
-    departure_datetime = DateTime.now + day_range + (departure_hour / 24.0)
+    departure_hour = rand(6..22)
+    departure_min = [5, 10, 15 ,20 ,25 ,30 ,35 ,40 ,45 ,50 ,55].sample.to_f
+    departure_hour_min = "#{departure_hour + (departure_min / 60.0)}".to_f
+    day_range = rand(1..30)
+    departure_datetime = Date.today.to_datetime + day_range + (departure_hour_min / 24.0)
 
     # distance_km = distance["distance"]
     distance_km = [2316.0, 2000.0, 1600.0, 1400.0, 900.0].sample
@@ -154,7 +158,7 @@ end
 
 
 # city description
-all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest']
+all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest', 'Athen', 'Dublin']
 all_cities.each do |city|
 
   # get data from distance24 API
