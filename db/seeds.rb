@@ -48,8 +48,10 @@ end
 if Airline.count != 1
   # destroy all existing Airport datasets
   puts "detroy all airlines and flights..."
-  Airline.destroy_all
+  FlightBundleFlight.destroy_all
+  FlightBundle.destroy_all
   Flight.destroy_all
+  Airline.destroy_all
   puts "airlines and flights has been destroyed"
 
   # parsing all airlines
@@ -64,7 +66,7 @@ if Airline.count != 1
     airline_acronym = airline["iata"]
     airline_name = airline["name"]
 
-    new_airline = Airline.new(acronym: airline_acronym, name: airline_name).save if Airline.where("acronym = ?", airline_acronym) == []
+    new_airline = Airline.new(acronym: airline_acronym, name: airline_name).save # if Airline.where("acronym = ?", airline_acronym) == []
 
   end
   puts "Created #{Airline.count} airlines."
@@ -95,8 +97,8 @@ if Flight.count != 8000
   20000.times do
     # get random start and end airport
 
-    # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest, Athen, Dublin
-    start_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'ATH', 'DUB'].sample
+    # Munich, Berlin, Paris, Lisbon, London, Madrid, Bratislava, Oslo, Reykjavik, Rome, Vienna, Warschau, Stockholm, Budapest, Dublin
+    start_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'DUB'].sample
 
     # search for start airport city
     start_airport = Airport.where(acronym: start_airport)
@@ -105,7 +107,7 @@ if Flight.count != 8000
 
     exclude_airports = Airport.where(city_id: start_airport[0].city_id).pluck(:acronym)
 
-    end_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'ATH', 'DUB']
+    end_airport = ['MUC','TXL','SXF', 'CDG', 'LGW', 'LHR', 'LIS', 'MAD', 'BTS', 'OSL', 'RKV', 'FCO', 'VIE', 'WAW', 'ARN', 'BUD', 'DUB']
     end_airport = end_airport - exclude_airports
     end_airport = end_airport.sample
 
@@ -115,7 +117,7 @@ if Flight.count != 8000
 
     # get random airline
     # airline = Airline.limit(1).order("RANDOM()")
-    random_airline = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Germanwings', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air']
+    random_airline = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Germanwings', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air'].sample
     airline = Airline.where(name: random_airline).first
 
     # calculate random start date
@@ -141,7 +143,7 @@ if Flight.count != 8000
       flight_duration: flight_duration,
       from_airport_id: start_airport.ids.first,
       to_airport_id: end_airport.ids.first,
-      airline_id: airline.ids.first
+      airline_id: airline.id
       )
     new_flight.save
     puts "1000 flights" if Flight.count == 1000
@@ -158,7 +160,7 @@ end
 
 
 # city description
-all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest', 'Athen', 'Dublin']
+all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest', 'Dublin']
 all_cities.each do |city|
 
   # get data from distance24 API
