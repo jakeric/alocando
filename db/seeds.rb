@@ -1,7 +1,7 @@
 
 # Seed of cities and airports
 
-if City.count != 4925
+if City.count != 49
   # destroy all existing Airport datasets
   puts "detroy all airports..."
   Airport.destroy_all
@@ -46,7 +46,7 @@ end
 
 # Seed of the airlines
 
-if Airline.count != 806
+if Airline.count != 800
   # destroy all existing Airport datasets
   puts "detroy all airlines and flights..."
   FlightBundleFlight.destroy_all
@@ -82,13 +82,13 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 20001
+if Flight.count != 2000
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
-  #FlightBundleFlight.destroy_all
-  # FlightBundle.destroy_all
-  # Flight.destroy_all
+  FlightBundleFlight.destroy_all
+  FlightBundle.destroy_all
+  Flight.destroy_all
   puts "#{number_of_flights} has been deleted."
 
   puts "creating 20000 f**king flights..."
