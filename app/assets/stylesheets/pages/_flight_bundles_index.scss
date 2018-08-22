@@ -100,7 +100,7 @@
 .results__results-infos-destination {
   padding: 0 20px;
   margin: 20px;
-    position: relative;
+  position: relative;
 
   h1 {
     font-size: 26px;
@@ -118,15 +118,23 @@
       background-color: #F7A442;
       border: none;
       }
-
-  .button-book:active{
+  &:active{
       background:#F7A442;
+  }
+
+  .button-book:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
   }
 }
 
 
 .results__results-infos-description {
   padding: 0 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 // flights parts
@@ -291,3 +299,46 @@
   color: #CAE3E1;
 }
 
+
+
+
+
+
+#email {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+
+#form_message {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+
+.btn-share {
+color: white;
+margin-top: 5px;
+}
+
+.btn-share:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
+}
+
+#url {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+ .label-text{
+ color: black;
+ font-weight: lighter;
+ font-size: 13px;
+ float: left;
+}

@@ -30,7 +30,14 @@
     border: none;
   }
 
-.btn-modal:active{
+  .btn-modal:active{
     background:#F7A442;
-}
+
+  }
+  .btn-modal:hover {
+    opacity: 1;
+    background: #f9bc72;
+    text-decoration: none;
+    color: white !important;
+  }
 }

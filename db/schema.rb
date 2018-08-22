@@ -88,14 +88,6 @@ ActiveRecord::Schema.define(version: 2018_08_22_145127) do
     t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string "photo"
-    t.bigint "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_photos_on_city_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -118,5 +110,4 @@ ActiveRecord::Schema.define(version: 2018_08_22_145127) do
   add_foreign_key "flight_bundle_flights", "flight_bundles"
   add_foreign_key "flight_bundle_flights", "flights"
   add_foreign_key "flights", "airlines"
-  add_foreign_key "photos", "cities"
 end
