@@ -85,7 +85,8 @@
 }
 
 .results__results-infos-picture {
-  background-image: image-url("london.jpg");
+  // background-image: image-url("london.jpg");
+  border: 1px solid black;
   background-size: cover;
   width: 99.4%;
   height: 300px;
