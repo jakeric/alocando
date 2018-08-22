@@ -118,8 +118,7 @@
       background-color: #F7A442;
       border: none;
       }
-
-  .button-book:active{
+  &:active{
       background:#F7A442;
   }
 }
@@ -127,6 +126,8 @@
 
 .results__results-infos-description {
   padding: 0 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 // flights parts
