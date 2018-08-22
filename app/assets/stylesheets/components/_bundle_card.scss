@@ -27,11 +27,13 @@
   left: 25px;
   top: 55px;
   text-align: left;
+
   h4 {
     font-size: 26px;
     font-weight: bold;
     line-height: 0.7;
     color: white;
+
   }
   span {
     font-size: 14px;
@@ -47,12 +49,36 @@
   font-family: 'Montserrat', sans-serif;
   color: $dark-turquoise;
   font-weight: bolder;
+  position: relative;
   h4 {
     line-height: 0.8;
     font-weight: bold;
+    position: absolute;
+  right: 5px;
+  bottom: -28px;
+
   }
   span {
     font-size: 12px;
     font-weight: lighter;
+  }
+
+  .button-share {
+    position: absolute;
+    right: 5px;
+    top: 30px;
+    background-color: #F7A442;
+    border: none;
+      }
+
+  .button-share:active{
+      background:#F7A442;
+  }
+
+  .button-share:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
   }
 }

@@ -5,9 +5,11 @@ class ShareMailer < ApplicationMailer
   #
   #   en.share_mailer.share.subject
   #
-  def share(email, flight_bundle_id)
+  def share(email, flight_bundle_id, url, message)
     @flight_bundle = FlightBundle.find(flight_bundle_id)
+    @url = url
+    @message = message
 
-    mail(to: email, subject: 'How about this trip with your friend.')   #  "to@example.org"
+    mail(to: email, subject: 'A friend shared a trip with you')   #  "to@example.org"
   end
 end
