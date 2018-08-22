@@ -15,7 +15,6 @@
         <button type="button" class="btn btn-primary button-share" data-toggle="modal" data-target="#exampleModal<%= i %> ">Share</button>
       </div>
     </div>
-
   </div>
 
        <!-- Modal Share-->
@@ -37,13 +36,14 @@
                       <form action="/share" method="post" class="form-inline">
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <label class="label-text" for="url" >Shared URL: </label>
-                        <input type="text" class="form-control" id="url" value="https://www.alocando.com/flight_bundles/<%= flight_bundle.id %>">
+                        <input type="text" class="form-control" id="url" name="url" value="https://www.alocando.com/flight_bundles/<%= flight_bundle.id %>">
                         <label class="label-text" for="email" >Your friends email: </label>
-                        <input type="text" id="email" placeholder="Your friends email" name="email" required="required" class="form-control">
+                        <input type="text" id="email" placeholder="Your friends email" name="friends-email" required="required" class="form-control">
                         <label class="label-text" for="email">Your email: </label>
                         <input type="text" id="email" placeholder="Your email to receive a copy" name="email" class="form-control">
                         <label class="label-text" for="email">Your Message: </label>
-                        <textarea id="form_message" name="message" class="form-control" placeholder="Message for your friend" rows="3" required="required" data-error="Please, leave us a message."></textarea>
+                        <input type="hidden" name="flight_bundle_id" value="<%= flight_bundle.id %>">
+                        <textarea id="form_message" name="message" class="form-control" placeholder="Message for your friend" rows="3" required="required" data-error="Please, leave a message."></textarea>
                         <button type="submit" class="btn btn-orange btn-share mb-2">Share</button>
                       </form>
 
