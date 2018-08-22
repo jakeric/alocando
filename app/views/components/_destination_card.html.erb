@@ -1,7 +1,7 @@
 <div class="results__result-infos-card">
   <div class="results__results-infos-picture">
     <!-- put links to images -->
-    <%= image_tag 'london.jpg' %>
+    <%= cl_image_tag(FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.attachments.first.photo) %>
   </div>
 
   <!-- City and country -->
