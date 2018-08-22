@@ -82,12 +82,12 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 20000
+if Flight.count != 20001
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
-  FlightBundleFlight.destroy_all
-  FlightBundle.destroy_all
+  #FlightBundleFlight.destroy_all
+  # FlightBundle.destroy_all
   # Flight.destroy_all
   puts "#{number_of_flights} has been deleted."
 
