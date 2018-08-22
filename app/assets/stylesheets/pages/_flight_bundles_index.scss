@@ -122,6 +122,13 @@
   .button-book:active{
       background:#F7A442;
   }
+
+  .button-book:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
+  }
 }
 
 
@@ -313,6 +320,13 @@
 .btn-share {
 color: white;
 margin-top: 5px;
+}
+
+.btn-share:hover {
+  opacity: 1;
+  background: #f9bc72;
+  text-decoration: none;
+  color: white !important;
 }
 
 #url {
