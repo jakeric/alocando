@@ -41,6 +41,17 @@
             <p>Your friends flight: <%= friends_price %> € </p>
             <p>Be fair and share the bill. </p>
             <p><%= own_message %></p>
+
+            <!-- sharing form -->
+            <form action="/share" method="post" class="form-inline">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <label class="sr-only" for="email">Your friends email: </label>
+              <input type="text" id="email" placeholder="your friends email" name="email">
+              <input type="hidden" name="flight_bundle_id" value="<%= flight_bundle.id %>">
+              <button type="submit" class="btn btn-orange mb-2">Share</button>
+
+            </form>
+
           </div>
           <div class="col-md-6">
             <div class="container-modal-image">
