@@ -120,6 +120,7 @@ skip_before_action :authenticate_user!
         @bundle_id = flight_bundle_params["flight_bundle"]
       else
         @bundle_id = @bundle[0].id
+        # Cuty.where global request - then pass this var in js render, then adapt the destination card code
       end
 
       @pictures_hash = {}
