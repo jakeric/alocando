@@ -1,21 +1,61 @@
 
   <div class="bundle-card-backgound">
 
-    <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
+    <%#= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
 
     <div class="bundle-card-outline" id="left-card">
       <div class="bundle-card-destination">
+        <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
         <h4><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name %><br><span><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.country %></span></h4>
+        <% end %>
       </div>
 
       <div class="bundle-card-price">
         <h4><%= flight_bundle.total_price.to_i %>€<br><span>for two</span></h4>
+        <button type="button" class="btn btn-primary button-share" data-toggle="modal" data-target="#exampleModal<%= i %> ">Share</button>
       </div>
     </div>
 
-    <% end %>
-
   </div>
 
+       <!-- Modal Share-->
+          <div class="modal fade modal-book" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel<%= i %>" aria-hidden="true">
+            <div class="modal-dialog book-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header ">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLabel<%= i %>">Share your flight</h5>
+              </div>
 
+              <div class="modal-body modal-body-cover">
+                <div class="container-modal-text">
+                  <div class="row">
 
+                    <div class="col-md-6 text-center">
+                      <form action="/share" method="post" class="form-inline">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <label class="label-text" for="url" >Shared URL: </label>
+                        <input type="text" class="form-control" id="url" value="https://www.alocando.com/flight_bundles/<%= flight_bundle.id %>">
+                        <label class="label-text" for="email" >Your friends email: </label>
+                        <input type="text" id="email" placeholder="Your friends email" name="email" required="required" class="form-control">
+                        <label class="label-text" for="email">Your email: </label>
+                        <input type="text" id="email" placeholder="Your email to receive a copy" name="email" class="form-control">
+                        <label class="label-text" for="email">Your Message: </label>
+                        <textarea id="form_message" name="message" class="form-control" placeholder="Message for your friend" rows="3" required="required" data-error="Please, leave us a message."></textarea>
+                        <button type="submit" class="btn btn-orange btn-share mb-2">Share</button>
+                      </form>
+
+                    </div>
+                    <div class="col-md-6">
+                      <div class="container-modal-image">
+                        <%= image_tag "reco.png" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
