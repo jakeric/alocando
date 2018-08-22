@@ -1,57 +1,66 @@
 <!-- Button for the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%=i %> ">
+  Book
+</button>
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Book
-          </button>
+<!-- Ruby code for the Modal -->
 
-          <!-- Ruby code for the Modal -->
+<% your_price = flight_bundle.flight_bundle_flights[0].flight.price + flight_bundle.flight_bundle_flights[1].flight.price %>
+<% friends_price = flight_bundle.flight_bundle_flights[2].flight.price + flight_bundle.flight_bundle_flights[3].flight.price %>
+<% total_price = flight_bundle.total_price %>
+<% shared_price = flight_bundle.total_price / 2 %>
+<% debt = 0 %>
 
-          <% your_price = flight_bundle.flight_bundle_flights[0].flight.price + flight_bundle.flight_bundle_flights[1].flight.price %>
-          <% friends_price = flight_bundle.flight_bundle_flights[2].flight.price + flight_bundle.flight_bundle_flights[3].flight.price %>
-          <% total_price = flight_bundle.total_price %>
-          <% shared_price = flight_bundle.total_price / 2 %>
-          <% debt = 0 %>
+<% if your_price > friends_price %>
+<%  debt = your_price - shared_price %>
+<%  own_message = "Your friend owes you #{debt} €." %>
+<% else %>
+<%  debt = friends_price - shared_price %>
+<%  own_message = "You owe your friend #{debt} €." %>
+<% end %>
 
-          <% if your_price > friends_price %>
-          <%  debt = your_price - shared_price %>
-          <%  own_message = "Your friend owes you #{debt} €." %>
-          <% else %>
-          <%  debt = friends_price - shared_price %>
-          <%  own_message = "You owe your friend #{debt} €." %>
-          <% end %>
+<!-- Modal -->
+<div class="modal fade modal-book" id="exampleModal<%= i %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel<%= i %>" aria-hidden="true">
+  <div class="modal-dialog book-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h5 class="modal-title" id="exampleModalLabel<%= i %>">Book your flight</h5>
+    </div>
 
-          <%= raise %>
-          <!-- Modal -->
-          <div class="modal fade modal-book" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog book-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header ">
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h5 class="modal-title" id="exampleModalLabel">Book your flight</h5>
-              </div>
+    <div class="modal-body modal-body-cover">
+      <div class="container-modal-text">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h4>Please choose your starting location</h4>
+            <button type="button" class="btn btn-primary btn-modal" ><%= params["your-city"].split(" (")[0] %></button>
+            <button type="button" class="btn btn-primary btn-modal"><%= params["friends-city"].split(" (")[0] %></button>
+            <p>Your flight: <%= your_price %> € </p>
+            <p>Your friends flight: <%= friends_price %> € </p>
+            <p>Be fair and share the bill. </p>
+            <p><%= own_message %></p>
 
-              <div class="modal-body modal-body-cover">
-                <div class="container-modal-text">
-                  <div class="row">
-                    <div class="col-md-6 text-center">
-                      <h4>Please choose your starting location</h4>
-                      <button type="button" class="btn btn-primary btn-modal" ><%= params["your-city"].split(" (")[0] %></button>
-                      <button type="button" class="btn btn-primary btn-modal"><%= params["friends-city"].split(" (")[0] %></button>
-                      <p>Your flight: <%= your_price %> </p>
-                      <p>Your friends flight: <%= friends_price %> </p>
-                      <p>Be fair and share the bill. </p>
-                      <p><%= own_message %></p>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="container-modal-image">
-                        <%= image_tag "frie.png" %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- sharing form -->
+            <form action="/share" method="post" class="form-inline">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <label class="sr-only" for="email">Your friends email: </label>
+              <input type="text" id="email" placeholder="your friends email" name="email">
+              <input type="hidden" name="flight_bundle_id" value="<%= flight_bundle.id %>">
+              <button type="submit" class="btn btn-orange mb-2">Share</button>
+
+            </form>
+
+          </div>
+          <div class="col-md-6">
+            <div class="container-modal-image">
+              <%= image_tag "frie.png" %>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
