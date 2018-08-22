@@ -134,11 +134,6 @@ skip_before_action :authenticate_user!
     @flight_bundle_flights = @flight_bundle.flight_bundle_flights
   end
 
-  def create
-  end
-
-  def destroy
-  end
 
   private
 
