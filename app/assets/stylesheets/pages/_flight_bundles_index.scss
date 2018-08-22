@@ -86,11 +86,16 @@
 
 .results__results-infos-picture {
   // background-image: image-url("london.jpg");
-  border: 1px solid black;
-  background-size: cover;
-  width: 99.4%;
-  height: 300px;
-  border-radius: 5px 5px 0 0;
+  height: 350px;
+  img {
+    max-width: 100%;
+    width: 99.45%;
+    max-height: 100%;
+    margin-top : 0px;
+    margin-left : 0px;
+    margin-right : 0px;
+    object-fit: cover;
+  }
 }
 .results__results-infos-destination {
   padding: 0 20px;
