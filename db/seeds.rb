@@ -1,7 +1,7 @@
 
 # Seed of cities and airports
 
-if City.count != 1
+if City.count != 4925
   # destroy all existing Airport datasets
   puts "detroy all airports..."
   Airport.destroy_all
@@ -45,7 +45,7 @@ end
 
 # Seed of the airlines
 
-if Airline.count != 1
+if Airline.count != 806
   # destroy all existing Airport datasets
   puts "detroy all airlines and flights..."
   FlightBundleFlight.destroy_all
@@ -81,7 +81,7 @@ puts "airports without a city has been deleted"
 
 
 # seeding flights
-if Flight.count != 8000
+if Flight.count != 20000
 
   puts "deleting all the flights..."
   number_of_flights = Flight.count
@@ -117,7 +117,7 @@ if Flight.count != 8000
 
     # get random airline
     # airline = Airline.limit(1).order("RANDOM()")
-    random_airline = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Germanwings', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air'].sample
+    random_airline = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air'].sample
     airline = Airline.where(name: random_airline).first
 
     # calculate random start date
@@ -159,7 +159,7 @@ else
 end
 
 
-# city description
+city description
 all_cities = ['Munich', 'Berlin', 'Paris', 'Lisbon', 'London', 'Madrid', 'Bratislava', 'Oslo', 'Reykjavik', 'Rome', 'Vienna', 'Warsaw', 'Stockholm', 'Budapest', 'Dublin']
 all_cities.each do |city|
 
@@ -179,4 +179,17 @@ all_cities.each do |city|
   city_to_update.save
 end
 
+# +++++++ Adding Airline urls for the Airlines we are Using +++++++++ #
+used_airlines = ['Ryanair', 'Lufthansa', 'KLM', 'EasyJet', 'Turkish Airlines', 'TAP Portugal', 'Air France', 'Aeroflot', 'Pegasus Airlines', 'Wizz Air', 'Eurowings', 'Virgin Atlantic', 'Norwegian Air']
+used_airlines_urls = ['https://www.ryanair.com','https://www.lufthansa.com/online/portal/lh_com/de/homepage','https://www.klm.com/','https://www.easyjet.com/','https://www.turkishairlines.com/','https://www.flytap.com/','https://www.airfrance.com/','https://www.aeroflot.ru/xx-en?_preferredLocale=xx&_preferredLanguage=en','https://www.flypgs.com/','https://wizzair.com/','https://www.eurowings.com/','https://www.virginatlantic.com/','https://www.norwegian.com/']
+counter = 0
+used_airlines.each do |airline|
+  airline_update = Airline.where(name: airline).first
+  airline_update.url = used_airlines_urls[counter]
+  airline_update.save
+  counter += 1
+end
+
+
+# ++++ END OF SEED ++++ #
 puts "You have just been seeded Duuuude."
