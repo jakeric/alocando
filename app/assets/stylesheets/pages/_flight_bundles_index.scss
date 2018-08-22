@@ -94,7 +94,7 @@
 .results__results-infos-destination {
   padding: 0 20px;
   margin: 20px;
-    position: relative;
+  position: relative;
 
   h1 {
     font-size: 26px;
@@ -285,3 +285,39 @@
   color: #CAE3E1;
 }
 
+
+// ------
+
+
+
+#email {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+
+#form_message {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+
+.btn-share {
+color: white;
+margin-top: 5px;
+}
+
+#url {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: black;
+}
+ .label-text{
+ color: black;
+ font-weight: lighter;
+ font-size: 13px;
+ float: left;
+}
