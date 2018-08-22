@@ -4,8 +4,8 @@
 if City.count != 4925
   # destroy all existing Airport datasets
   puts "detroy all airports..."
-  Airport.destroy_all
-  City.destroy_all
+  # Airport.destroy_all
+  # City.destroy_all
   puts "airports destroyed"
 
   # parsing all airports and cities
