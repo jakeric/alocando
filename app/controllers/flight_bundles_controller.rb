@@ -114,17 +114,24 @@ skip_before_action :authenticate_user!
         end
       end
 
-      @image_array = []
-      @bundle.each do |trip|
-        Pixabay.new(width:100, height:100).search(trip.flight_bundle_flights.first.flight.to_airport.city.to_s).each { |el| @image_array << el[:url] }
-      end
 
-
+      # Checking for AJAX if it is the first load of the page or an AJAX request
       if flight_bundle_params.key?('flight_bundle')
         @bundle_id = flight_bundle_params["flight_bundle"]
       else
         @bundle_id = @bundle[0].id
       end
+
+      @pictures_hash = {}
+        @bundle.each do |flight_bundle|
+          @city = flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name
+          @id = flight_bundle.id
+          @image_array = []
+          Pixabay.new(width:100, height:100).search(@city).each { |el| @image_array << el[:url] }
+          @url = @image_array[0]
+          @pictures_hash["#{@id}"] = @url
+        end
+
     end
   end
 
