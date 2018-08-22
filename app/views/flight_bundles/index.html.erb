@@ -1,5 +1,5 @@
 <div class="wrapper">
-   <button type="button" class="btn btn-primary button-share" data-toggle="modal" data-target="#exampleModal ">Share</button>
+
   <!-- container on top with the search bar, the recap and filters  -->
   <div class="container results__container-head">
 
@@ -38,7 +38,7 @@
 
     <div class="results__search-recap">
       <h3>
-        <%= @bundle.size %> results flying from
+        <b><%= @bundle.size %> results</b> flying from
         <strong><%= params["your-city"].split(" ")[0] %></strong>
         and
         <strong><%= params["friends-city"].split(" ")[0] %></strong>,
