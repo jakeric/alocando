@@ -24,15 +24,17 @@
 }
 .bundle-card-destination {
   position: absolute;
-  left: 25px;
-  top: 55px;
   text-align: left;
-
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
   h4 {
     font-size: 26px;
     font-weight: bold;
     line-height: 0.7;
     color: white;
+    margin-top: 65px;
+    margin-left: 20px;
   }
 
   span {
@@ -44,13 +46,15 @@
 
 .bundle-card-price {
   position: absolute;
-  right: 13px;
-  top: 40px;
+  right: -395px;
+  top: 9px;
   text-align: right;
   font-family: 'Montserrat', sans-serif;
   color: $dark-turquoise;
   font-weight: bolder;
   position: relative;
+  height: 30px;
+  width: 100px;
   h4 {
     line-height: 0.8;
     font-weight: bold;
@@ -73,7 +77,7 @@
       }
 
   .button-share:active{
-      background:#F7A442;
+    background:#F7A442;
   }
 
   .button-share:hover {
@@ -82,4 +86,8 @@
   text-decoration: none;
   color: white !important;
   }
+}
+
+#bundle-card-share-button {
+  margin-top: 28px;
 }

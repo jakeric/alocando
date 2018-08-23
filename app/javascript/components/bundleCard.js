@@ -1,2 +1,5 @@
-const card = document.getElementById('left-card');
+
+
+
+const card = document.querySelectorAll('#left-card');
 console.log(card);
