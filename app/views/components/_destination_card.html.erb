@@ -8,9 +8,8 @@
   <div class="results__results-infos-destination">
     <h1><%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.name %></h1>
     <h4><%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.country %></h4>
-    <button type="button" class="btn btn-primary button-book" data-toggle="modal" data-target="#exampleModal<%= flight_bundle %> ">
-  Book
-</button>
+
+    <button type="button" class="btn btn-primary button-book" data-toggle="modal" data-target="#exampleModal<%= flight_bundle %> ">Book</button>
   </div>
 
 

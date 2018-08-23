@@ -1,86 +1,100 @@
 // Specific CSS for your home-page
-body {
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 1.4;
-}
 
-.header-text h2 {
-  font-weight: 200;
-  font-size: 25px;
-}
-
-.header-logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  img {
-    width: 180px;
-  }
-}
-
-#header {
-  /*color: #828282;
-  padding: 50px;
-  height: 100vh;
-  align-items: center
-  justify-content: center;*/
-  color: white;
+.home-banner {
   height: 80vh;
-  text-align: center;
   background-size: cover;
-
-  // justify-content: space-around;
-  // align-items: center;
-  // display: flex;
-
-
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  position: relative
 }
-
+.banner-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.home-banner-content {
+  height: 300px;
+  margin-top: 240px;
+  display: flex;
+  flex-direction: column;
+}
 .header-text {
-  position: absolute;
-  bottom: 230px;
-  right: 485px;
-}
-
-.color {
-background-color: white;
-}
-.search-form {
-  position: absolute;
-  bottom: 180px;
-  right: 440px;
+  h1 {
+    font-weight: bold;
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 32px;
+  }
 }
 
 .form-homepage {
   display: flex;
+  justify-content: space-between;
+  color: #5E5E5E;
+  margin-top: 40px;
 }
 
-.input-padding {
-  margin-right: 4px;
+#inlineFormInputFriendCity {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #5E5E5E !important;
 }
+#inlineFormInputCity {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #5E5E5E !important;
+}
+#inlineFormStartInputDate {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 255px;
+  color: #5E5E5E !important;
+}
+#datepicker-submit {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #5E5E5E !important;
+}
+
 
 .wrapper-grey {
   background-color: #EFEFEF;
+  color: #5E5E5E;
 }
-
 .wrapper-turquois {
   background-color: #CAE3E1;
+  color: #5E5E5E;
 }
+.card-grey {
+  p {
+    font-size: 15px !important;
+  }
+}
+.card-turquois {
+  p {
+    font-size: 15px !important;
+  }
+}
+.center-boxes {
+  display: flex;
+  align-items: center;
+}
+
 
 .card {
   background-color: white;
   border-radius: 5px;
   padding: 15px;
   margin: 10px 0;
-  /*height: 25vh;*/
   text-align: center;
 }
 
@@ -110,23 +124,25 @@ background-color: white;
   width: 160px;
  }
 
-.center-boxes {
-display: flex;
-justify-content: space-around;
-}
+// .center-boxes {
+// display: flex;
+// justify-content: space-around;
+// }
 
 .container-fluid-no-padding {
   padding: 0px;
   color: black;
   text-align: center;
   background-size: cover;
-/*  display: flex;
-*/  justify-content: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .btn-orange {
 background-color: #F7A442;
+color: white !important;
+height: 39px;
 border: none;
 }
 
@@ -135,8 +151,4 @@ border: none;
   background: #f9bc72;
   text-decoration: none;
   color: white !important;
-}
-
-#inlineFormStartInputDate {
-  width: 200px;
 }

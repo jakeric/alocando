@@ -3,9 +3,9 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 100px;
+  height: 110px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.6);
+  color: white;
 }
 
 .footer-links {
@@ -13,13 +13,15 @@
   align-items: center;
   position: absolute;
   bottom: 20px;
-  left: 50px
+  left: 50px;
 }
 
 .footer-copyright {
   position: absolute;
   bottom: 20px;
-  right: 50px
+  right: 50px;
+  font-weight: bolder;
+  color: white;
 }
 
 .footer-static-pages {
@@ -29,8 +31,8 @@
   a {
   padding-right: 20px;
   font-weight: normal;
-  color: rgba(0,0,0,0.6) ;
-
+  color: white !important;
+  font-weight: bolder;
    }
 }
 
