@@ -5,6 +5,8 @@
 
     <div class="results__result-infos-card">
       <div class="results__results-infos-picture">
+
+        <%= cl_image_tag(@flight_bundle.flight_bundle_flights.first.flight.to_airport.city.attachments.first.photo) %>
         <!-- put links to images -->
       </div>
 
@@ -232,21 +234,21 @@
                   <div class="row row-destination-activities">
                     <div class="col-xs-6 activities-list">
                       <h4>Top sights</h4>
-                      <p>1. <%=  FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_one %></p>
-                      <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_two%></p>
-                      <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_three%></p>
+                      <p>1. <%=  @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_one %></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_three%></p>
                     </div>
                     <div class="col-xs-6 activities-list">
                       <h4>Top restaurants</h4>
-                      <p>1. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_one%></p>
-                      <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_two%></p>
-                      <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_three%></p>
+                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_one%></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_three%></p>
                     </div>
                     <div class="col-xs-6 activities-list">
                       <h4>Top museums</h4>
-                      <p>1. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_one%></p>
-                      <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_two%></p>
-                      <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_three%></p>
+                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_one%></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_three%></p>
                     </div>
                   </div>
                 </div>
@@ -277,10 +279,10 @@
 
             <% if your_price > friends_price %>
             <%  debt = your_price - shared_price %>
-            <%  own_message = "Your friend owes you #{debt} €." %>
+            <%  own_message = "Your friend owes you " %>
             <% else %>
             <%  debt = friends_price - shared_price %>
-            <%  own_message = "You owe your friend #{debt} €." %>
+            <%  own_message = "You owe your friend " %>
             <% end %>
 
             <!-- Modal -->
@@ -299,12 +301,12 @@
                     <div class="row">
                       <div class="col-md-6 text-center">
                         <h4>Please choose your starting location</h4>
-                        <button type="button" class="btn btn-primary btn-modal" ><%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.name %></button>
-                        <button type="button" class="btn btn-primary btn-modal"><%= @flight_bundle.flight_bundle_flights[2].flight.from_airport.city.name %></button>
-                        <p>Your flight: <%= your_price %> € </p>
-                        <p>Your friends flight: <%= friends_price %> € </p>
-                        <p>Be fair and share the bill. </p>
-                        <p><%= own_message %></p>
+                        <button type="button" class="btn btn-primary btn-modal" ><%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %></button>
+                        <button type="button" class="btn btn-primary btn-modal"><%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %></button>
+                       <p>Your flight: <b> <%= your_price %> € </b> </p>
+                       <p>Your friends flight: <b> <%= friends_price %> € </b> </p>
+                       <p>Be fair and share the bill.</p>
+                       <p><%= own_message %> <b> <%= debt %> €</b>. </p>
                       </div>
                       <div class="col-md-6">
                         <div class="container-modal-image">
