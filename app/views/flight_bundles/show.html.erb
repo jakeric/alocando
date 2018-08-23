@@ -280,10 +280,10 @@
 
             <% if your_price > friends_price %>
             <%  debt = your_price - shared_price %>
-            <%  own_message = "#{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} " %>
+            <%  own_message = "#{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} " %>
             <% else %>
             <%  debt = friends_price - shared_price %>
-            <%  own_message = "#{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} "%>
+            <%  own_message = "#{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} "%>
             <% end %>
 
             <!-- Modal -->
