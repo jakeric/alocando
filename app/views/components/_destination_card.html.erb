@@ -230,23 +230,22 @@
       <div class="row row-destination-activities">
         <div class="col-xs-6 activities-list">
           <h4>Top sights</h4>
-          <p>1. Castelo de Sao Jorge</p>
-          <p>2. Bélem</p>
-          <p>3. Miradouro da Senhora do Monte</p>
+          <p>1. <%=  FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_one %></p>
+          <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_two%></p>
+          <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.sight_three%></p>
         </div>
         <div class="col-xs-6 activities-list">
           <h4>Top restaurants</h4>
-          <p>1. Castelo de Sao Jorge</p>
-          <p>2. Bélem</p>
-          <p>3. Miradouro da Senhora do Monte</p>
+          <p>1. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_one%></p>
+          <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_two%></p>
+          <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.restaurant_three%></p>
         </div>
         <div class="col-xs-6 activities-list">
-          <h4>Top bars</h4>
-          <p>1. Castelo de Sao Jorge</p>
-          <p>2. Bélem</p>
-          <p>3. Miradouro da Senhora do Monte</p>
+          <h4>Top museums</h4>
+          <p>1. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_one%></p>
+          <p>2. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_two%></p>
+          <p>3. <%= FlightBundle.find(flight_bundle).flight_bundle_flights.first.flight.to_airport.city.bar_three%></p>
         </div>
-
       </div>
     </div>
 
