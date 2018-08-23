@@ -234,21 +234,21 @@
                   <div class="row row-destination-activities">
                     <div class="col-xs-6 activities-list">
                       <h4>Top sights</h4>
-                      <p>1. <%=  @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_one %></p>
-                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_two%></p>
-                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.sight_three%></p>
+                      <p>1. <%=  @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.sight_one %></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.sight_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.sight_three%></p>
                     </div>
                     <div class="col-xs-6 activities-list">
                       <h4>Top restaurants</h4>
-                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_one%></p>
-                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_two%></p>
-                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.restaurant_three%></p>
+                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.restaurant_one%></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.restaurant_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.restaurant_three%></p>
                     </div>
                     <div class="col-xs-6 activities-list">
                       <h4>Top museums</h4>
-                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_one%></p>
-                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_two%></p>
-                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.bar_three%></p>
+                      <p>1. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.bar_one%></p>
+                      <p>2. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.bar_two%></p>
+                      <p>3. <%= @flight_bundle.flight_bundle_flights.first.flight.from_airport.city.bar_three%></p>
                     </div>
                   </div>
                 </div>
@@ -260,8 +260,9 @@
                 <div class="bubble">
                   <div class="row row-destination-quote">
                     <div class="col-xs-12 destination-quote">
-                      <h4>"This city is DA BOMB"</h4>
-                      <p>Arnold Schwartzeneger himlself</p>
+                      <% quote = @quote_array.sample %>
+                      <h4>"<%= quote[1] %>"</h4>
+                      <p><%= quote[0] %></p>
                     </div>
                   </div>
                 </div>
