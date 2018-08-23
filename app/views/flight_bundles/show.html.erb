@@ -22,7 +22,7 @@
 
       <!-- City description -->
       <div class="results__results-infos-description">
-        <p><%= truncate(@flight_bundle.flight_bundle_flights.first.flight.to_airport.city.description, :length => 100) %></p>
+        <p><%= @flight_bundle.flight_bundle_flights.first.flight.to_airport.city.description %></p>
       </div>
 
       <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXX -->
@@ -301,8 +301,8 @@
                     <div class="row">
                       <div class="col-md-6 text-center">
                         <h4>Please choose your starting location</h4>
-                        <button type="button" class="btn btn-primary btn-modal" ><%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %></button>
-                        <button type="button" class="btn btn-primary btn-modal"><%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %></button>
+                        <button type="button" class="btn btn-primary btn-modal" onclick="doubleTab('<%= @flight_bundle.flight_bundle_flights[3].flight.airline.url %>' ,'<%=@flight_bundle.flight_bundle_flights[2].flight.airline.url %>')"><%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %></button>
+                        <button type="button" class="btn btn-primary btn-modal" onclick="doubleTab('<%= @flight_bundle.flight_bundle_flights[1].flight.airline.url %>' ,'<%=@flight_bundle.flight_bundle_flights[0].flight.airline.url %>')"><%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %></button>
                        <p>Flights from <%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %>: <b> <%= your_price %> € </b> </p>
                        <p>Flights from <%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %>: <b> <%= friends_price %> € </b> </p>
                        <p>Be fair and share the bill.</p>
@@ -322,3 +322,11 @@
 
         </div>
       </div>
+
+<!-- Javascript for the airline links -->
+<script>
+  function doubleTab(link1,link2) {
+      window.open(link1, '_blank');
+      window.open(link2, '_blank');
+  }
+</script>
