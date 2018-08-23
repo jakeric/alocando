@@ -279,10 +279,10 @@
 
             <% if your_price > friends_price %>
             <%  debt = your_price - shared_price %>
-            <%  own_message = "Your friend owes you " %>
+            <%  own_message = "#{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} " %>
             <% else %>
             <%  debt = friends_price - shared_price %>
-            <%  own_message = "You owe your friend " %>
+            <%  own_message = "#{@flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name} owes #{@flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name} "%>
             <% end %>
 
             <!-- Modal -->
@@ -303,8 +303,8 @@
                         <h4>Please choose your starting location</h4>
                         <button type="button" class="btn btn-primary btn-modal" ><%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %></button>
                         <button type="button" class="btn btn-primary btn-modal"><%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %></button>
-                       <p>Your flight: <b> <%= your_price %> € </b> </p>
-                       <p>Your friends flight: <b> <%= friends_price %> € </b> </p>
+                       <p>Flights from <%= @flight_bundle.flight_bundle_flights[1].flight.from_airport.city.name %>: <b> <%= your_price %> € </b> </p>
+                       <p>Flights from <%= @flight_bundle.flight_bundle_flights[3].flight.from_airport.city.name %>: <b> <%= friends_price %> € </b> </p>
                        <p>Be fair and share the bill.</p>
                        <p><%= own_message %> <b> <%= debt %> €</b>. </p>
                       </div>

@@ -275,10 +275,10 @@
 
 <% if your_price > friends_price %>
 <%  debt = your_price - shared_price %>
-<%  own_message = "Your friend owes you " %>
+<%  own_message = "#{params["friends-city"].split(" (")[0]} owes #{params["your-city"].split(" (")[0]} " %>
 <% else %>
 <%  debt = friends_price - shared_price %>
-<%  own_message = "You owe your friend " %>
+<%  own_message = "#{params["your-city"].split(" (")[0]} owes #{params["friends-city"].split(" (")[0]} " %>
 <% end %>
 
 
@@ -300,8 +300,8 @@
             <h4>Please choose your starting location</h4>
             <button type="button" class="btn btn-primary btn-modal" ><%= params["your-city"].split(" (")[0] %></button>
             <button type="button" class="btn btn-primary btn-modal"><%= params["friends-city"].split(" (")[0] %></button>
-            <p>Your flight: <b> <%= your_price %> € </b> </p>
-            <p>Your friends flight: <b> <%= friends_price %> € </b> </p>
+            <p>Flights from <%= params["your-city"].split(" (")[0] %>:<b> <%= your_price %> € </b> </p>
+            <p>Flights from <%= params["friends-city"].split(" (")[0] %>: <b> <%= friends_price %> € </b> </p>
             <p>Be fair and share the bill.</p>
             <p><%= own_message %> <b> <%= debt %> €</b>. </p>
           </div>
