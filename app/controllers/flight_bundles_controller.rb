@@ -134,12 +134,64 @@ skip_before_action :authenticate_user!
         end
 
     end
+
+    # quotes [author, quote]
+    # suorce: https://www.roughguides.com/gallery/50-inspirational-travel-quotes/
+    quote_one = ['Gustave Flaubert','Travel makes one modest, you see what a tiny place you occupy in the world.']
+    quote_two = ['Mark Twain','Travel is fatal to prejudice, bigotry, and narrow-mindedness.']
+    quote_three = ['Henry Miller',"One's destination is never a place, but always a new way of seeing things."]
+    quote_four = ["George Bernard Shaw","I dislike feeling at home when I'm abroad."]
+    quote_five = ["Dagobert D. Runes","People travel to faraway places to watch, in fascination, the people they ignore at home."]
+    quote_six = ["Henry David Thoreau","Not until we are lost do we begin to understand ourselves."]
+    quote_seven = ["Aldous Huxley","For the born traveller, travelling is a besetting vice. Like other vices, it is imperious, demanding its victim's time, money, energy and the sacrifice of comfort."]
+    quote_eight = ["Benjamin Disraeli","Like all great travellers, I have seen more than I remember, and remember more than I have seen."]
+    quote_nine = ["T.S. Eliot","The journey not the arrival matters."]
+    quote_ten = ["Kurt Vonnegut","Bizarre travel plans are dancing lessons from God."]
+    quote_eleven = ["Oscar Wilde","I never travel without my diary. One should always have something sensational to read in the train."]
+    quote_twelve = ["Marcel Proust","The real voyage of discovery consists not in seeing new landscapes, but in having new eyes."]
+    quote_thirteen = ["Seneca", "Travel and change of place impart new vigour to the mind."]
+    quote_fourteen = ["Martin Buber","All journeys have secret destinations of which the traveller is unaware."]
+    quote_fivteen = ["Robert Frost","Two roads diverged in a wood and I – I took the one less travelled by."]
+    quote_sixteen = ["Paul Theroux","Tourists don't know where they've been, travellers don't know where they're going."]
+    quote_seventeen = ["Lao Tzu","A good traveller has no fixed plans and is not intent on arriving."]
+    quote_eighteen = ["John Steinbeck","A journey is like marriage. The certain way to be wrong is to think you control it."]
+    quote_nineteen = ["Albert Einstein","I love to travel, but hate to arrive."]
+
+    @quote_array = [quote_one,quote_two,quote_three,quote_four,quote_five,quote_six,quote_seven,quote_eight,quote_nine,quote_ten,quote_eleven,quote_twelve,quote_thirteen,quote_fourteen,quote_fivteen,quote_sixteen,quote_seventeen,quote_eighteen,quote_nineteen]
+    @quote_array.shuffle!
+
   end
 
   def show
     # show the location you chose on the result page
     @flight_bundle = FlightBundle.find(params[:id])
     @flight_bundle_flights = @flight_bundle.flight_bundle_flights
+
+    # quotes [author, quote]
+    # suorce: https://www.roughguides.com/gallery/50-inspirational-travel-quotes/
+    quote_one = ['Gustave Flaubert','Travel makes one modest, you see what a tiny place you occupy in the world.']
+    quote_two = ['Mark Twain','Travel is fatal to prejudice, bigotry, and narrow-mindedness.']
+    quote_three = ['Henry Miller',"One's destination is never a place, but always a new way of seeing things."]
+    quote_four = ["George Bernard Shaw","I dislike feeling at home when I'm abroad."]
+    quote_five = ["Dagobert D. Runes","People travel to faraway places to watch, in fascination, the people they ignore at home."]
+    quote_six = ["Henry David Thoreau","Not until we are lost do we begin to understand ourselves."]
+    quote_seven = ["Aldous Huxley","For the born traveller, travelling is a besetting vice. Like other vices, it is imperious, demanding its victim's time, money, energy and the sacrifice of comfort."]
+    quote_eight = ["Benjamin Disraeli","Like all great travellers, I have seen more than I remember, and remember more than I have seen."]
+    quote_nine = ["T.S. Eliot","The journey not the arrival matters."]
+    quote_ten = ["Kurt Vonnegut","Bizarre travel plans are dancing lessons from God."]
+    quote_eleven = ["Oscar Wilde","I never travel without my diary. One should always have something sensational to read in the train."]
+    quote_twelve = ["Marcel Proust","The real voyage of discovery consists not in seeing new landscapes, but in having new eyes."]
+    quote_thirteen = ["Seneca", "Travel and change of place impart new vigour to the mind."]
+    quote_fourteen = ["Martin Buber","All journeys have secret destinations of which the traveller is unaware."]
+    quote_fivteen = ["Robert Frost","Two roads diverged in a wood and I – I took the one less travelled by."]
+    quote_sixteen = ["Paul Theroux","Tourists don't know where they've been, travellers don't know where they're going."]
+    quote_seventeen = ["Lao Tzu","A good traveller has no fixed plans and is not intent on arriving."]
+    quote_eighteen = ["John Steinbeck","A journey is like marriage. The certain way to be wrong is to think you control it."]
+    quote_nineteen = ["Albert Einstein","I love to travel, but hate to arrive."]
+
+    @quote_array = [quote_one,quote_two,quote_three,quote_four,quote_five,quote_six,quote_seven,quote_eight,quote_nine,quote_ten,quote_eleven,quote_twelve,quote_thirteen,quote_fourteen,quote_fivteen,quote_sixteen,quote_seventeen,quote_eighteen,quote_nineteen]
+    @quote_array.shuffle!
+
   end
 
 

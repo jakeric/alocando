@@ -256,8 +256,9 @@
     <div class="bubble">
       <div class="row row-destination-quote">
         <div class="col-xs-12 destination-quote">
-          <h4>"This city is DA BOMB"</h4>
-          <p>Arnold Schwartzeneger himlself</p>
+          <% quote = @quote_array.sample %>
+          <h4>"<%= quote[1] %>"</h4>
+          <p><%= quote[0] %></p>
         </div>
       </div>
     </div>
