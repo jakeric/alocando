@@ -42,11 +42,13 @@
     font-weight: lighter;
   }
 }
-
+.bundle_selected {
+  width: 620px;
+}
 
 .bundle-card-price {
   position: absolute;
-  right: -395px;
+  right: -77%;
   top: 9px;
   text-align: right;
   font-family: 'Montserrat', sans-serif;
