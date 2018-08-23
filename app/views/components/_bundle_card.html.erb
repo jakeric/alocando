@@ -4,17 +4,22 @@
     <%#= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
 
     <div class="bundle-card-outline" id="left-card">
+
+    <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
+
       <div class="bundle-card-destination ">
-        <%= link_to flight_bundles_path(flight_bundle: flight_bundle, params: @search_params), remote: true do%>
         <h4><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.name %><br><span><%= flight_bundle.flight_bundle_flights.first.flight.to_airport.city.country %></span></h4>
-        <% end %>
       </div>
+
+      <% end %>
 
       <div class="bundle-card-price">
         <h4><%= flight_bundle.total_price.to_i %>€<br><span>for two</span></h4>
-        <button type="button" class="btn btn-primary button-share" data-toggle="modal" data-target="#exampleModal<%= i %> ">Share</button>
+        <button type="button" class="btn btn-primary button-share" id="bundle-card-share-button" data-toggle="modal" data-target="#exampleModal<%= i %> ">Share</button>
       </div>
+
     </div>
+
   </div>
 
        <!-- Modal Share-->
